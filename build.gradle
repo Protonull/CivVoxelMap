@@ -22,12 +22,21 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}")
     modApi("net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}")
+
+    // https://modrinth.com/mod/voxelmap-updated/version/1.20.1-1.12.13
+    modImplementation(include("maven.modrinth:voxelmap-updated:uDfYW2uw"))
 }
 
 repositories {
     maven {
         name "ParchmentMC"
         url "https://maven.parchmentmc.org"
+    }
+    maven {
+        url "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
