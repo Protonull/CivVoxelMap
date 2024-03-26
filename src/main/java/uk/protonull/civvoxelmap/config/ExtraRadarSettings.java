@@ -60,7 +60,7 @@ public final class ExtraRadarSettings {
                     self.setMessage(createButtonText(PREFIX, newValue));
                 }
             )
-            .tooltip(Tooltip.create(Component.literal("Civ (Fair Play): Hide crouching players?")))
+            .tooltip(Tooltip.create(Component.literal("Civ (Fair Play): Hide crouching players? (slight delay)")))
             .build();
         RadarConfigAlignment.realignOptionWidget(button, screen, index);
         return button;
