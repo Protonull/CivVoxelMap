@@ -1,5 +1,6 @@
 package uk.protonull.civvoxelmap.mixins;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.gui.GuiRadarOptions;
 import com.mamiyaotaru.voxelmap.gui.overridden.EnumOptionsMinimap;
@@ -108,19 +109,21 @@ public abstract class GuiRadarOptionsMixin implements RadarConfigAlignment.Acces
     // Warnings
     // ============================================================
 
-    @ModifyVariable(
+    @Inject(
         method = "init",
         at = @At(
-            value = "STORE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/overridden/GuiOptionButtonMinimap;<init>(IILcom/mamiyaotaru/voxelmap/gui/overridden/EnumOptionsMinimap;Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/components/Button$OnPress;)V"
+            value = "INVOKE",
+            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;",
+            ordinal = 0,
+            shift = At.Shift.BEFORE
         )
     )
-    private @NotNull GuiOptionButtonMinimap cvm_modify_variable$addTooltipWarnings(
-        final @NotNull GuiOptionButtonMinimap button
+    private void cvm_inject$addTooltipWarnings(
+        final @NotNull CallbackInfo ci,
+        final @NotNull @Local GuiOptionButtonMinimap button
     ) {
         switch (button.returnEnumOptions()) {
             case SHOWPLAYERHELMETS, SHOWMOBHELMETS -> button.setTooltip(Tooltip.create(Component.literal("Civ (illegal): Must be disabled as it reads entity data!")));
         }
-        return button;
     }
 }
