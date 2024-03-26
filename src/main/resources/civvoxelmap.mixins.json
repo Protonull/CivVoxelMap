@@ -5,7 +5,10 @@
     "compatibilityLevel": "JAVA_17",
     "mixins": [],
     "client": [
-        "GuiRadarOptionsMixin"
+        "accessors.ScreenAccessor",
+        "ContactMixin",
+        "GuiRadarOptionsMixin",
+        "RadarSettingsManagerMixin"
     ],
     "injectors": {
         "defaultRequire": 1

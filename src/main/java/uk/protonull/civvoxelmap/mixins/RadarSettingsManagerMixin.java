@@ -1,0 +1,64 @@
+package uk.protonull.civvoxelmap.mixins;
+
+import com.mamiyaotaru.voxelmap.RadarSettingsManager;
+import java.io.PrintWriter;
+import org.jetbrains.annotations.NotNull;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
+
+@Mixin(RadarSettingsManager.class)
+public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Accessor {
+    @Unique
+    private static final String HIDE_ELEVATION_KEY = "HideElevation";
+
+    @Unique
+    private boolean cvm_unique$hideElevation = true;
+
+    @Unique
+    @Override
+    public boolean hideElevation() {
+        return this.cvm_unique$hideElevation;
+    }
+
+    @Unique
+    @Override
+    public void hideElevation(
+        final boolean hideElevation
+    ) {
+        this.cvm_unique$hideElevation = hideElevation;
+    }
+
+    @ModifyVariable(
+        method = "loadSettings",
+        at = @At(
+            value = "STORE",
+            target = "Ljava/lang/String;split(Ljava/lang/String;)[Ljava/lang/String;"
+        ),
+        remap = false
+    )
+    private @NotNull String @NotNull [] cvm_modify_variable$loadExtraSettings(
+        final @NotNull String @NotNull [] row
+    ) {
+        if (HIDE_ELEVATION_KEY.equals(row[0])) {
+            hideElevation(Boolean.parseBoolean(row[1]));
+            return new String[] { "", "" };
+        }
+        return row;
+    }
+
+    @ModifyVariable(
+        method = "saveAll",
+        at = @At("TAIL"),
+        argsOnly = true,
+        remap = false
+    )
+    private @NotNull PrintWriter cvm_modify_variable$saveExtraSettings(
+        final @NotNull PrintWriter out
+    ) {
+        out.println(HIDE_ELEVATION_KEY + ":" + hideElevation());
+        return out;
+    }
+}
