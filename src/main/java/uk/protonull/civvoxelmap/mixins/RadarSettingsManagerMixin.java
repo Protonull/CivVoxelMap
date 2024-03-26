@@ -4,13 +4,40 @@ import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import java.io.PrintWriter;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
 
 @Mixin(RadarSettingsManager.class)
 public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Accessor {
+    // ============================================================
+    // Defaults
+    // ============================================================
+
+    @Shadow
+    public boolean showHelmetsPlayers;
+    @Shadow
+    public boolean showHelmetsMobs;
+
+    @Inject(
+        method = "<init>",
+        at = @At("TAIL")
+    )
+    private void cvm_inject$constructor(
+        final @NotNull CallbackInfo ci
+    ) {
+        this.showHelmetsPlayers = false;
+        this.showHelmetsMobs = false;
+    }
+
+    // ============================================================
+    // Custom Options
+    // ============================================================
+
     @Unique
     private static final String HIDE_ELEVATION_KEY = "HideElevation";
     @Unique
