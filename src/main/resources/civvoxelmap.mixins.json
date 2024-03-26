@@ -8,6 +8,7 @@
         "accessors.ScreenAccessor",
         "ContactMixin",
         "GuiRadarOptionsMixin",
+        "MapSettingsManagerMixin",
         "RadarMixin",
         "RadarSettingsManagerMixin",
         "RadarSimpleMixin"
