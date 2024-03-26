@@ -13,9 +13,13 @@ import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
 public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Accessor {
     @Unique
     private static final String HIDE_ELEVATION_KEY = "HideElevation";
+    @Unique
+    private static final String HIDE_SNEAKING_KEY = "HideSneaking";
 
     @Unique
     private boolean cvm_unique$hideElevation = true;
+    @Unique
+    private boolean cvm_unique$hideSneaking = false;
 
     @Unique
     @Override
@@ -29,6 +33,20 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         final boolean hideElevation
     ) {
         this.cvm_unique$hideElevation = hideElevation;
+    }
+
+    @Unique
+    @Override
+    public boolean hideSneaking() {
+        return this.cvm_unique$hideSneaking;
+    }
+
+    @Unique
+    @Override
+    public void hideSneaking(
+        final boolean hideSneaking
+    ) {
+        this.cvm_unique$hideSneaking = hideSneaking;
     }
 
     @ModifyVariable(
@@ -46,6 +64,10 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
             hideElevation(Boolean.parseBoolean(row[1]));
             return new String[] { "", "" };
         }
+        if (HIDE_SNEAKING_KEY.equals(row[0])) {
+            hideSneaking(Boolean.parseBoolean(row[1]));
+            return new String[] { "", "" };
+        }
         return row;
     }
 
@@ -59,6 +81,7 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         final @NotNull PrintWriter out
     ) {
         out.println(HIDE_ELEVATION_KEY + ":" + hideElevation());
+        out.println(HIDE_SNEAKING_KEY + ":" + hideSneaking());
         return out;
     }
 }

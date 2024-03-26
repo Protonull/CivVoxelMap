@@ -93,5 +93,11 @@ public abstract class GuiRadarOptionsMixin implements RadarConfigAlignment.Acces
             (ExtraRadarSettings.Accessor) this.options,
             getNextOptionIndex()
         ));
+
+        cvm_invoker$addRenderableWidget(ExtraRadarSettings.createHideSneakingButton(
+            (GuiRadarOptions) (Object) this,
+            (ExtraRadarSettings.Accessor) this.options,
+            getNextOptionIndex()
+        ));
     }
 }

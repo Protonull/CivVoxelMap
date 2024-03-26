@@ -8,7 +8,9 @@
         "accessors.ScreenAccessor",
         "ContactMixin",
         "GuiRadarOptionsMixin",
-        "RadarSettingsManagerMixin"
+        "RadarMixin",
+        "RadarSettingsManagerMixin",
+        "RadarSimpleMixin"
     ],
     "injectors": {
         "defaultRequire": 1
