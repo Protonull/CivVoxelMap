@@ -66,3 +66,18 @@ jar {
         rename { "${it}_${project.archives_base_name}"}
     }
 }
+
+tasks.register("cleanJar", Delete) {
+    delete fileTree("./dist") {
+        include "*.jar"
+    }
+}
+
+tasks.register("copyJar", Copy) {
+    dependsOn cleanJar
+    from remapJar
+    into "./dist"
+    rename "(.*?)\\.jar", "\$1-fabric.jar"
+}
+
+build.dependsOn copyJar
