@@ -18,14 +18,15 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     // Defaults
     // ============================================================
 
-    @Shadow
+    @Shadow(remap = false)
     public boolean showHelmetsPlayers;
-    @Shadow
+    @Shadow(remap = false)
     public boolean showHelmetsMobs;
 
     @Inject(
         method = "<init>",
-        at = @At("TAIL")
+        at = @At("TAIL"),
+        remap = false
     )
     private void cvm_inject$constructor(
         final @NotNull CallbackInfo ci

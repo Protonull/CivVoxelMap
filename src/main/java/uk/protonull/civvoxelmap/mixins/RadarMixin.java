@@ -14,7 +14,7 @@ import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
 @Mixin(Radar.class)
 public class RadarMixin {
     @Final
-    @Shadow
+    @Shadow(remap = false)
     public RadarSettingsManager options;
 
     @ModifyVariable(

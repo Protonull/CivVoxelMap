@@ -77,7 +77,7 @@ public abstract class GuiRadarOptionsMixin implements RadarConfigAlignment.Acces
     // ============================================================
 
     @Final
-    @Shadow
+    @Shadow(remap = false)
     private RadarSettingsManager options;
 
     @Inject(
