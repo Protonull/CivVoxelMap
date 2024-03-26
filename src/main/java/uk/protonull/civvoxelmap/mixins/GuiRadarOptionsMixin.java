@@ -3,10 +3,13 @@ package uk.protonull.civvoxelmap.mixins;
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.gui.GuiRadarOptions;
 import com.mamiyaotaru.voxelmap.gui.overridden.EnumOptionsMinimap;
+import com.mamiyaotaru.voxelmap.gui.overridden.GuiOptionButtonMinimap;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Renderable;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
+import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -99,5 +102,25 @@ public abstract class GuiRadarOptionsMixin implements RadarConfigAlignment.Acces
             (ExtraRadarSettings.Accessor) this.options,
             getNextOptionIndex()
         ));
+    }
+
+    // ============================================================
+    // Warnings
+    // ============================================================
+
+    @ModifyVariable(
+        method = "init",
+        at = @At(
+            value = "STORE",
+            target = "Lcom/mamiyaotaru/voxelmap/gui/overridden/GuiOptionButtonMinimap;<init>(IILcom/mamiyaotaru/voxelmap/gui/overridden/EnumOptionsMinimap;Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/components/Button$OnPress;)V"
+        )
+    )
+    private @NotNull GuiOptionButtonMinimap cvm_modify_variable$addTooltipWarnings(
+        final @NotNull GuiOptionButtonMinimap button
+    ) {
+        switch (button.returnEnumOptions()) {
+            case SHOWPLAYERHELMETS, SHOWMOBHELMETS -> button.setTooltip(Tooltip.create(Component.literal("Civ (illegal): Must be disabled as it reads entity data!")));
+        }
+        return button;
     }
 }

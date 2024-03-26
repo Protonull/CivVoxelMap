@@ -40,7 +40,7 @@ public final class ExtraRadarSettings {
                     self.setMessage(createButtonText(PREFIX, newValue));
                 }
             )
-            .tooltip(Tooltip.create(Component.literal("Civ: Disable VoxelMap's brightness and opacity elevation indicator?")))
+            .tooltip(Tooltip.create(Component.literal("Civ (required): Disable VoxelMap's brightness and opacity elevation indicator?")))
             .build();
         RadarConfigAlignment.realignOptionWidget(button, screen, index);
         return button;
