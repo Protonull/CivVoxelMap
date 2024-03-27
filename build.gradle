@@ -25,6 +25,9 @@ dependencies {
 
     // https://modrinth.com/mod/voxelmap-updated/version/1.20.1-1.12.13
     modImplementation(include("maven.modrinth:voxelmap-updated:uDfYW2uw"))
+
+    // https://modrinth.com/mod/modmenu/version/7.2.2
+    modCompileOnly("maven.modrinth:modmenu:lEkperf6")
 }
 
 repositories {
