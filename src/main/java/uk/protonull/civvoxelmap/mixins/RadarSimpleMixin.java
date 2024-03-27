@@ -28,6 +28,6 @@ public class RadarSimpleMixin {
     private Iterator<Entity> cvm_modify_variable$filterOutCrouchingPlayers(
         final Iterator<Entity> iterator
     ) {
-        return ExtraRadarSettings.filterOutSneakingPlayers(iterator, (ExtraRadarSettings.Accessor) this.options);
+        return ExtraRadarSettings.filterEntities(iterator, (ExtraRadarSettings.Accessor) this.options);
     }
 }

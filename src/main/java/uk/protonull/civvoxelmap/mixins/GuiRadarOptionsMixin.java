@@ -92,6 +92,10 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
             case MagicValues.RADAR_MODE_FULL -> initFull();
         }
 
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_INVISIBLE));
+
         cvm_invoker$addRenderableWidget(
             Buttons.createButton(Component.translatable("gui.done"))
                 .onPress((button) -> VoxelConstants.getMinecraft().setScreen(this.parent))
@@ -106,8 +110,6 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_FACING));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
     }
 
     @Unique
@@ -128,6 +130,5 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         );
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
     }
 }

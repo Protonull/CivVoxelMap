@@ -41,7 +41,6 @@ public final class RadarPlayerSettingsScreen extends Screen {
 
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYER_NAMES));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYER_HELMETS));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
 
         addRenderableWidget(
             Buttons.createButton(Component.translatable("gui.done"))

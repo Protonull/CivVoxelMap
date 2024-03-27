@@ -43,11 +43,15 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     private static final String HIDE_ELEVATION_KEY = "HideElevation";
     @Unique
     private static final String HIDE_SNEAKING_KEY = "HideSneaking";
+    @Unique
+    private static final String HIDE_INVISIBLE_KEY = "HideInvisible";
 
     @Unique
     private boolean cvm_unique$hideElevation = true;
     @Unique
     private boolean cvm_unique$hideSneaking = false;
+    @Unique
+    private boolean cvm_unique$hideInvisible = false;
 
     @Unique
     @Override
@@ -77,6 +81,20 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         this.cvm_unique$hideSneaking = hideSneaking;
     }
 
+    @Unique
+    @Override
+    public boolean hideInvisible() {
+        return this.cvm_unique$hideInvisible;
+    }
+
+    @Unique
+    @Override
+    public void hideInvisible(
+        final boolean hideInvisible
+    ) {
+        this.cvm_unique$hideInvisible = hideInvisible;
+    }
+
     @ModifyVariable(
         method = "loadSettings",
         at = @At(
@@ -96,6 +114,10 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
             hideSneaking(Boolean.parseBoolean(row[1]));
             return new String[] { "", "" };
         }
+        if (HIDE_INVISIBLE_KEY.equals(row[0])) {
+            hideInvisible(Boolean.parseBoolean(row[1]));
+            return new String[] { "", "" };
+        }
         return row;
     }
 
@@ -110,6 +132,7 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     ) {
         out.println(HIDE_ELEVATION_KEY + ":" + hideElevation());
         out.println(HIDE_SNEAKING_KEY + ":" + hideSneaking());
+        out.println(HIDE_INVISIBLE_KEY + ":" + hideInvisible());
         return out;
     }
 }

@@ -466,7 +466,39 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (Fair Play): Hide crouching players? (slight delay)"));
+            return Tooltip.create(Component.literal("Civ (Fair Play): Hide crouching entities? (slight delay)"));
+        }
+    };
+
+    RadarOption<Boolean> HIDE_INVISIBLE = new RadarOption<>() {
+        @Override
+        public @NotNull Component getLabel(
+            final @NotNull Boolean value
+        ) {
+            return Buttons.boolMessage("Hide invisible", value);
+        }
+        @Override
+        public @NotNull Boolean getValue(
+            final @NotNull RadarSettingsManager manager
+        ) {
+            return ((ExtraRadarSettings.Accessor) manager).hideInvisible();
+        }
+        @Override
+        public void setValue(
+            final @NotNull RadarSettingsManager manager,
+            final @NotNull Boolean value
+        ) {
+            ((ExtraRadarSettings.Accessor) manager).hideInvisible(value);
+        }
+        @Override
+        public void nextValue(
+            final @NotNull RadarSettingsManager manager
+        ) {
+            setValue(manager, !getValue(manager));
+        }
+        @Override
+        public Tooltip getTooltip() {
+            return Tooltip.create(Component.literal("Civ (Fair Play): Hide invisible entities? (slight delay)"));
         }
     };
 }
