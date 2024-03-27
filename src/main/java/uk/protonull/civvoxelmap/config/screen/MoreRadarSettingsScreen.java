@@ -2,6 +2,7 @@ package uk.protonull.civvoxelmap.config.screen;
 
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.VoxelConstants;
+import java.util.List;
 import java.util.Objects;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -13,18 +14,19 @@ import uk.protonull.civvoxelmap.config.RadarOption;
 import uk.protonull.civvoxelmap.gui.widgets.Buttons;
 import uk.protonull.civvoxelmap.gui.widgets.RadarOptionButton;
 
-public final class RadarPlayerSettingsScreen extends Screen {
+public final class MoreRadarSettingsScreen extends Screen {
     private final Screen parentScreen;
-    private final RadarSettingsManager options;
+    private final List<RadarOptionButton<?>> options;
     private int optionIndex;
 
-    public RadarPlayerSettingsScreen(
+    private MoreRadarSettingsScreen(
         final @NotNull Screen parentScreen,
-        final @NotNull RadarSettingsManager options
+        final @NotNull Component title,
+        final @NotNull List<@NotNull RadarOptionButton<?>> options
     ) {
-        super(Component.literal("Additional Player-Radar Settings"));
+        super(title);
         this.parentScreen = Objects.requireNonNull(parentScreen);
-        this.options = Objects.requireNonNull(options);
+        this.options = List.copyOf(options);
     }
 
     private @NotNull Button addOptionButton(
@@ -38,9 +40,7 @@ public final class RadarPlayerSettingsScreen extends Screen {
     @Override
     protected void init() {
         this.optionIndex = 0;
-
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYER_NAMES));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYER_HELMETS));
+        this.options.forEach(this::addOptionButton);
 
         addRenderableWidget(
             Buttons.createButton(Component.translatable("gui.done"))
@@ -60,5 +60,35 @@ public final class RadarPlayerSettingsScreen extends Screen {
         renderBackground(drawContext);
         drawContext.drawCenteredString(this.font, this.title, this.width / 2, 20, 0xFFFFFF);
         super.render(drawContext, mouseX, mouseY, delta);
+    }
+
+    public static @NotNull MoreRadarSettingsScreen forPlayers(
+        final @NotNull Screen parentScreen,
+        final @NotNull RadarSettingsManager manager
+    ) {
+        return new MoreRadarSettingsScreen(
+            parentScreen,
+            Component.literal("Additional Player-Radar Settings"),
+            List.of(
+                new RadarOptionButton<>(manager, RadarOption.SHOW_PLAYER_NAMES),
+                new RadarOptionButton<>(manager, RadarOption.SHOW_PLAYER_HELMETS)
+            )
+        );
+    }
+
+    public static @NotNull MoreRadarSettingsScreen forMobs(
+        final @NotNull Screen parentScreen,
+        final @NotNull RadarSettingsManager manager
+    ) {
+        return new MoreRadarSettingsScreen(
+            parentScreen,
+            Component.literal("Additional Mob-Radar Settings"),
+            List.of(
+                new RadarOptionButton<>(manager, RadarOption.SHOW_HOSTILES),
+                new RadarOptionButton<>(manager, RadarOption.SHOW_NEUTRALS),
+                new RadarOptionButton<>(manager, RadarOption.SHOW_MOB_NAMES),
+                new RadarOptionButton<>(manager, RadarOption.SHOW_MOB_HELMETS)
+            )
+        );
     }
 }

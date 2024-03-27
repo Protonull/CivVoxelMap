@@ -19,8 +19,7 @@ import org.spongepowered.asm.mixin.Unique;
 import uk.protonull.civvoxelmap.MagicValues;
 import uk.protonull.civvoxelmap.config.RadarConfigAlignment;
 import uk.protonull.civvoxelmap.config.RadarOption;
-import uk.protonull.civvoxelmap.config.screen.RadarMobSettingsScreen;
-import uk.protonull.civvoxelmap.config.screen.RadarPlayerSettingsScreen;
+import uk.protonull.civvoxelmap.config.screen.MoreRadarSettingsScreen;
 import uk.protonull.civvoxelmap.gui.widgets.Buttons;
 import uk.protonull.civvoxelmap.gui.widgets.RadarOptionButton;
 import uk.protonull.civvoxelmap.mixins.accessors.ScreenAccessor;
@@ -118,7 +117,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         addOptionButtonWithCog(
             new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS),
             Component.literal("More player settings"),
-            (cog) -> VoxelConstants.getMinecraft().setScreen(new RadarPlayerSettingsScreen(screen, this.options))
+            (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forPlayers(screen, this.options))
         );
         addOptionButtonWithCog(
             // TODO: Fix this button not disabling when the radar is disabled, unlike the RadarOptionButton's
@@ -126,7 +125,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
                 .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
                 .build(),
             Component.literal("More mob settings"),
-            (cog) -> VoxelConstants.getMinecraft().setScreen(new RadarMobSettingsScreen(screen, this.options))
+            (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forMobs(screen, this.options))
         );
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
