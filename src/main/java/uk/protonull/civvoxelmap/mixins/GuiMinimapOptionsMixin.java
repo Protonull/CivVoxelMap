@@ -31,7 +31,7 @@ public abstract class GuiMinimapOptionsMixin {
         final @NotNull @Local GuiOptionButtonMinimap button
     ) {
         switch (button.returnEnumOptions()) {
-            case CAVEMODE -> button.setTooltip(Tooltip.create(Component.literal("Civ (illegal): Must be disabled! Cave Mode is permitted in the Nether and VoxelMap will use it regardless of this setting.")));
+            case CAVEMODE -> button.setTooltip(Tooltip.create(Component.literal("Civ (illegal): Must be OFF!")));
         }
     }
 }

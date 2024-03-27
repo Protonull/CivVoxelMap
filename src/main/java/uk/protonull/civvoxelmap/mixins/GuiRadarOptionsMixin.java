@@ -49,6 +49,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         return button;
     }
 
+    @Unique
     private void addOptionButtonWithCog(
         final @NotNull Button button,
         final @NotNull Component tooltip,

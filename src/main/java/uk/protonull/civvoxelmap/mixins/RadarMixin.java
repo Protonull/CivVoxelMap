@@ -4,6 +4,7 @@ import com.mamiyaotaru.voxelmap.Radar;
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import java.util.Iterator;
 import net.minecraft.world.entity.Entity;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -25,8 +26,8 @@ public class RadarMixin {
         ),
         remap = false
     )
-    private Iterator<Entity> cvm_modify_variable$filterOutCrouchingPlayers(
-        final Iterator<Entity> iterator
+    private @NotNull Iterator<Entity> cvm_modify_variable$filterOutCrouchingPlayers(
+        final @NotNull Iterator<Entity> iterator
     ) {
         return ExtraRadarSettings.filterEntities(iterator, (ExtraRadarSettings.Accessor) this.options);
     }
