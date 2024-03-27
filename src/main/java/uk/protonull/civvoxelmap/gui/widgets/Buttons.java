@@ -6,8 +6,6 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
 public final class Buttons {
-    public static final Button.OnPress DEFAULT_ON_PRESS = (button) -> {};
-
     public interface OnPressStage {
         @NotNull Button.Builder onPress(
             @NotNull Button.OnPress handler
@@ -26,5 +24,19 @@ public final class Buttons {
                 return Button.builder(message, handler);
             }
         };
+    }
+
+    public static @NotNull Component boolMessage(
+        final @NotNull String prefix,
+        final boolean value
+    ) {
+        return Component.literal(prefix + ": " + (value ? "ON" : "OFF"));
+    }
+
+    public static <T extends Enum<T>> @NotNull Component enumMessage(
+        final @NotNull String prefix,
+        final T value
+    ) {
+        return Component.literal(prefix + ": " + value.name());
     }
 }

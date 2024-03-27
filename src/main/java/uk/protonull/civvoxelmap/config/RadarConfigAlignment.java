@@ -6,10 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
 public final class RadarConfigAlignment {
-    public interface Accessor {
-        int getNextOptionIndex();
-    }
-
     public static void realignOptionWidget(
         final @NotNull AbstractWidget widget,
         final @NotNull GuiRadarOptions screen,

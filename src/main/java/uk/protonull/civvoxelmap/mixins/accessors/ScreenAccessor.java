@@ -14,4 +14,10 @@ public interface ScreenAccessor {
     <T extends GuiEventListener & Renderable & NarratableEntry> @NotNull T cvm_invoker$addRenderableWidget(
         @NotNull T widget
     );
+
+    @Invoker("clearWidgets")
+    void cvm_invoker$clearWidgets();
+
+    @Invoker("clearFocus")
+    void cvm_invoker$clearFocus();
 }

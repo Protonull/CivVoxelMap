@@ -1,129 +1,110 @@
 package uk.protonull.civvoxelmap.mixins;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
+import com.mamiyaotaru.voxelmap.VoxelConstants;
+import com.mamiyaotaru.voxelmap.gui.GuiMobs;
 import com.mamiyaotaru.voxelmap.gui.GuiRadarOptions;
-import com.mamiyaotaru.voxelmap.gui.overridden.EnumOptionsMinimap;
-import com.mamiyaotaru.voxelmap.gui.overridden.GuiOptionButtonMinimap;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarratableEntry;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
+import uk.protonull.civvoxelmap.MagicValues;
 import uk.protonull.civvoxelmap.config.RadarConfigAlignment;
+import uk.protonull.civvoxelmap.config.RadarOption;
+import uk.protonull.civvoxelmap.gui.widgets.Buttons;
+import uk.protonull.civvoxelmap.gui.widgets.RadarOptionButton;
 import uk.protonull.civvoxelmap.mixins.accessors.ScreenAccessor;
 
 @Mixin(GuiRadarOptions.class)
-public abstract class GuiRadarOptionsMixin implements RadarConfigAlignment.Accessor, ScreenAccessor {
-    // ============================================================
-    // Realignment
-    // ============================================================
-
-    @Unique
-    private int cvm$optionIndex = 0;
-
-    @Unique
-    @Override
-    public int getNextOptionIndex() {
-        return this.cvm$optionIndex++;
-    }
-
-    @ModifyVariable(
-        method = "init",
-        at = @At("STORE")
-    )
-    private EnumOptionsMinimap[] cvm_modify_variable$getOptionCount(
-        final EnumOptionsMinimap[] options
-    ) {
-        this.cvm$optionIndex = options.length;
-        return options;
-    }
-
-    @ModifyArg(
-        method = "init",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;",
-            ordinal = 1
-        ),
-        index = 0
-    )
-    private <T extends GuiEventListener & Renderable & NarratableEntry> T cvm_modify_arg$realignMobsToDisplayButton(
-        final T widget
-    ) {
-        // Reposition the "Mobs to Display..." button so it doesn't look so out of place.
-        RadarConfigAlignment.realignOptionWidget(
-            (Button) widget,
-            (GuiRadarOptions) (Object) this,
-            ((RadarConfigAlignment.Accessor) this).getNextOptionIndex()
-        );
-        return widget;
-    }
-
-    // ============================================================
-    // Custom Options
-    // ============================================================
+public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
+    @Final
+    @Shadow
+    private Screen parent;
 
     @Final
     @Shadow(remap = false)
     private RadarSettingsManager options;
 
-    @Inject(
-        method = "init",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;",
-            ordinal = 2, // Put after "Mobs to Display..." button
-            shift = At.Shift.BEFORE
-        )
-    )
-    private void cvm_inject$addExtraOptions(
-        final @NotNull CallbackInfo ci
-    ) {
-        cvm_invoker$addRenderableWidget(ExtraRadarSettings.createHideElevationButton(
-            (GuiRadarOptions) (Object) this,
-            (ExtraRadarSettings.Accessor) this.options,
-            getNextOptionIndex()
-        ));
+    @Shadow
+    protected final Component screenTitle = Component.translatable("options.minimap.radar.title");
 
-        cvm_invoker$addRenderableWidget(ExtraRadarSettings.createHideSneakingButton(
-            (GuiRadarOptions) (Object) this,
-            (ExtraRadarSettings.Accessor) this.options,
-            getNextOptionIndex()
-        ));
+    @Unique
+    private int optionIndex;
+
+    @Unique
+    private @NotNull Button addOptionButton(
+        final @NotNull Button button
+    ) {
+        RadarConfigAlignment.realignOptionWidget(button, (GuiRadarOptions) (Object) this, this.optionIndex++);
+        cvm_invoker$addRenderableWidget(button);
+        return button;
     }
 
-    // ============================================================
-    // Warnings
-    // ============================================================
+    @SuppressWarnings("OverwriteAuthorRequired")
+    @Overwrite
+    public void init() {
+        final var screen = (GuiRadarOptions) (Object) this;
+        cvm_invoker$clearWidgets();
+        cvm_invoker$clearFocus();
+        this.optionIndex = 0;
 
-    @Inject(
-        method = "init",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;",
-            ordinal = 0,
-            shift = At.Shift.BEFORE
-        )
-    )
-    private void cvm_inject$addTooltipWarnings(
-        final @NotNull CallbackInfo ci,
-        final @NotNull @Local GuiOptionButtonMinimap button
-    ) {
-        switch (button.returnEnumOptions()) {
-            case SHOWPLAYERHELMETS, SHOWMOBHELMETS -> button.setTooltip(Tooltip.create(Component.literal("Civ (illegal): Must be disabled as it reads entity data!")));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.ENABLED, (button) -> {
+            for (final GuiEventListener widget : screen.children()) {
+                if (widget instanceof final RadarOptionButton<?> optionButton) {
+                    optionButton.update();
+                }
+            }
+        }));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.MODE, (button) -> init()));
+
+        switch (this.options.radarMode) {
+            case MagicValues.RADAR_MODE_SIMPLE -> initSimple();
+            case MagicValues.RADAR_MODE_FULL -> initFull();
         }
+
+        cvm_invoker$addRenderableWidget(
+            Buttons.createButton(Component.translatable("gui.done"))
+                .onPress((button) -> VoxelConstants.getMinecraft().setScreen(this.parent))
+                .bounds(screen.width / 2 - 100, screen.height / 6 + 168, 200, 20)
+                .build()
+        );
+    }
+
+    @Unique
+    private void initSimple() {
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_HOSTILES));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_FACING));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
+    }
+
+    @Unique
+    private void initFull() {
+        final var screen = (GuiRadarOptions) (Object) this;
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_HOSTILES));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYER_NAMES));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_MOB_NAMES));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYER_HELMETS));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_MOB_HELMETS));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
+        addOptionButton(
+            // TODO: Fix this button not disabling when the radar is disabled, unlike the RadarOptionButton's
+            Buttons.createButton(Component.translatable("options.minimap.radar.selectmobs"))
+                .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
+                .build()
+        );
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
     }
 }
