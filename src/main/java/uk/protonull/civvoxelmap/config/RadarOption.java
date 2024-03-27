@@ -282,7 +282,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (illegal): Must be disabled!"));
+            return Tooltip.create(Component.literal("Civ (illegal): Must be OFF!"));
         }
     };
 
@@ -314,7 +314,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (illegal): Must be disabled!"));
+            return Tooltip.create(Component.literal("Civ (illegal): Must be OFF!"));
         }
     };
 
@@ -434,7 +434,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (illegal): Must be enabled!"));
+            return Tooltip.create(Component.literal("Civ (illegal): Must be ON!"));
         }
     };
 
