@@ -13,7 +13,7 @@ public class ModMenuIntegration implements ModMenuApi {
     }
 
     @Override
-    public Map<String, ConfigScreenFactory<?>> getProvidedConfigScreenFactories() {
+    public @NotNull Map<String, ConfigScreenFactory<?>> getProvidedConfigScreenFactories() {
         return Map.of("voxelmap", GuiMinimapOptions::new);
     }
 }

@@ -11,7 +11,7 @@ public final class RadarConfigAlignment {
     public static void realignOptionWidget(
         final @NotNull AbstractWidget widget,
         final @NotNull Screen screen,
-        final int index
+        final @Range(from = 0, to = Integer.MAX_VALUE) int index
     ) {
         widget.setX(calculateOptionX(widget, screen, index));
         widget.setY(calculateOptionY(widget, screen, index));
