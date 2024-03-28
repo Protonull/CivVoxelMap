@@ -6,6 +6,7 @@
     "mixins": [],
     "client": [
         "accessors.ScreenAccessor",
+        "opengl.OpenGLUtilsMixin",
         "ContactMixin",
         "GuiMinimapOptionsMixin",
         "GuiRadarOptionsMixin",
