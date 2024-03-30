@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GuiAddWaypoint.class)
-public class GuiAddWaypointMixin {
+public abstract class GuiAddWaypointMixin {
     @Shadow(remap = false)
     private boolean choosingColor;
     @Shadow(remap = false)

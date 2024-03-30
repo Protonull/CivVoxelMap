@@ -6,7 +6,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
-public class ModMenuIntegration implements ModMenuApi {
+public final class ModMenuIntegration implements ModMenuApi {
     @Override
     public @NotNull ConfigScreenFactory<?> getModConfigScreenFactory() {
         return GuiMinimapOptions::new;

@@ -72,7 +72,6 @@ public interface RadarOption<T> {
         ) {
             setValue(manager, !getValue(manager));
         }
-
         @Override
         public boolean requiresRadarEnabled() {
             return false;

@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(OpenGL.Utils.class)
-public class OpenGLUtilsMixin {
+public abstract class OpenGLUtilsMixin {
     @ModifyConstant(
         method = "setupFramebuffer",
         constant = @Constant(intValue = GL30.GL_DRAW_FRAMEBUFFER),
