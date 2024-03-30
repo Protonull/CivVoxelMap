@@ -20,6 +20,8 @@ legal.
 
 - Specific player/mob radar options now have their own screens, just click the cog icon.
 
+- Prevents VoxelMap rendering its smaller/pixelated waypoint icons.
+
 ## Requirements
 
 - Fabric Loader: `0.15.7` (or newer)

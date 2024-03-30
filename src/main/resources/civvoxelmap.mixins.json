@@ -10,6 +10,7 @@
         "ContactMixin",
         "GuiMinimapOptionsMixin",
         "GuiRadarOptionsMixin",
+        "MapMixin",
         "MapSettingsManagerMixin",
         "RadarMixin",
         "RadarSettingsManagerMixin",
