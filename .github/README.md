@@ -22,6 +22,8 @@ legal.
 
 - Prevents VoxelMap rendering its smaller/pixelated waypoint icons.
 
+- Allows players to ESC out of choosing waypoint colours and icons.
+
 ## Requirements
 
 - Fabric Loader: `0.15.7` (or newer)

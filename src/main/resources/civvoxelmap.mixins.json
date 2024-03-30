@@ -8,6 +8,7 @@
         "accessors.ScreenAccessor",
         "opengl.OpenGLUtilsMixin",
         "ContactMixin",
+        "GuiAddWaypointMixin",
         "GuiMinimapOptionsMixin",
         "GuiRadarOptionsMixin",
         "MapMixin",
