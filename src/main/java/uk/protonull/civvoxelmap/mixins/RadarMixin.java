@@ -36,6 +36,11 @@ public abstract class RadarMixin {
         return ExtraRadarSettings.filterEntities(iterator, (ExtraRadarSettings.Accessor) this.options);
     }
 
+    @Shadow
+    protected abstract boolean isHostile(
+        @NotNull Entity entity
+    );
+
     @Redirect(
         method = "calculateMobs",
         at = @At(
@@ -52,6 +57,10 @@ public abstract class RadarMixin {
 
         if (!extra.hideElevation()) {
             entities.sort(elevationComparator);
+        }
+
+        if (extra.useBetterRadarSort()) {
+            entities.sort(ExtraRadarSettings.radarEntitiesComparator(this::isHostile));
         }
     }
 }

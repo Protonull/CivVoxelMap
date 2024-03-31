@@ -24,6 +24,8 @@ legal.
 
 - Allows players to ESC out of choosing waypoint colours and icons.
 
+- Entities on radar are now ordered by default with the following priority: players > hostiles > other.
+
 ## Requirements
 
 - Fabric Loader: `0.15.7` (or newer)

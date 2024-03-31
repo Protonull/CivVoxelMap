@@ -500,4 +500,36 @@ public interface RadarOption<T> {
             return Tooltip.create(Component.literal("Civ (Fair Play): Hide invisible entities? (slight delay)"));
         }
     };
+
+    RadarOption<Boolean> BETTER_RADAR_SORTING = new RadarOption<>() {
+        @Override
+        public @NotNull Component getLabel(
+            final @NotNull Boolean value
+        ) {
+            return Buttons.boolMessage("Better sorting", value);
+        }
+        @Override
+        public @NotNull Boolean getValue(
+            final @NotNull RadarSettingsManager manager
+        ) {
+            return ((ExtraRadarSettings.Accessor) manager).useBetterRadarSort();
+        }
+        @Override
+        public void setValue(
+            final @NotNull RadarSettingsManager manager,
+            final @NotNull Boolean value
+        ) {
+            ((ExtraRadarSettings.Accessor) manager).useBetterRadarSort(value);
+        }
+        @Override
+        public void nextValue(
+            final @NotNull RadarSettingsManager manager
+        ) {
+            setValue(manager, !getValue(manager));
+        }
+        @Override
+        public Tooltip getTooltip() {
+            return Tooltip.create(Component.literal("Civ (Improvement): Sort radar entities in the order of: players > hostiles > others? (slight delay)"));
+        }
+    };
 }

@@ -95,6 +95,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_INVISIBLE));
+        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.BETTER_RADAR_SORTING));
 
         cvm_invoker$addRenderableWidget(
             Buttons.createButton(Component.translatable("gui.done"))

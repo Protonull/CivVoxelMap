@@ -45,6 +45,8 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     private static final String HIDE_SNEAKING_KEY = "HideSneaking";
     @Unique
     private static final String HIDE_INVISIBLE_KEY = "HideInvisible";
+    @Unique
+    private static final String RADAR_SORT_KEY = "BetterRadarSort";
 
     @Unique
     private boolean cvm_unique$hideElevation = true;
@@ -52,6 +54,8 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     private boolean cvm_unique$hideSneaking = false;
     @Unique
     private boolean cvm_unique$hideInvisible = false;
+    @Unique
+    private boolean cvm_unique$useBetterRadarSort = true;
 
     @Unique
     @Override
@@ -95,6 +99,20 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         this.cvm_unique$hideInvisible = hideInvisible;
     }
 
+    @Unique
+    @Override
+    public boolean useBetterRadarSort() {
+        return this.cvm_unique$useBetterRadarSort;
+    }
+
+    @Unique
+    @Override
+    public void useBetterRadarSort(
+        final boolean useBetterRadarSort
+    ) {
+        this.cvm_unique$useBetterRadarSort = useBetterRadarSort;
+    }
+
     @ModifyVariable(
         method = "loadSettings",
         at = @At(
@@ -118,6 +136,10 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
             hideInvisible(Boolean.parseBoolean(row[1]));
             return new String[] { "", "" };
         }
+        if (RADAR_SORT_KEY.equals(row[0])) {
+            useBetterRadarSort(Boolean.parseBoolean(row[1]));
+            return new String[] { "", "" };
+        }
         return row;
     }
 
@@ -133,6 +155,7 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         out.println(HIDE_ELEVATION_KEY + ":" + hideElevation());
         out.println(HIDE_SNEAKING_KEY + ":" + hideSneaking());
         out.println(HIDE_INVISIBLE_KEY + ":" + hideInvisible());
+        out.println(RADAR_SORT_KEY + ":" + useBetterRadarSort());
         return out;
     }
 }
