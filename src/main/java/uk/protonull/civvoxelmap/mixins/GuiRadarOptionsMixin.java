@@ -87,9 +87,30 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         }));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.MODE, (button) -> init()));
 
-        switch (this.options.radarMode) {
-            case MagicValues.RADAR_MODE_SIMPLE -> initSimple();
-            case MagicValues.RADAR_MODE_FULL -> initFull();
+        switch (RadarOption.MODE.getValue(this.options)) {
+            case SIMPLE -> {
+                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_HOSTILES));
+                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
+                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
+                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_FACING));
+            }
+            case FULL -> {
+                addOptionButtonWithCog(
+                    new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS),
+                    Component.literal("More player settings"),
+                    (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forPlayers(screen, this.options))
+                );
+                addOptionButtonWithCog(
+                    // TODO: Fix this button not disabling when the radar is disabled, unlike the RadarOptionButton's
+                    Buttons.createButton(Component.translatable("options.minimap.radar.selectmobs"))
+                        .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
+                        .build(),
+                    Component.literal("More mob settings"),
+                    (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forMobs(screen, this.options))
+                );
+                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
+                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
+            }
         }
 
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
@@ -103,33 +124,5 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
                 .bounds(screen.width / 2 - 100, screen.height / 6 + 168, 200, 20)
                 .build()
         );
-    }
-
-    @Unique
-    private void initSimple() {
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_HOSTILES));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_FACING));
-    }
-
-    @Unique
-    private void initFull() {
-        final var screen = (GuiRadarOptions) (Object) this;
-        addOptionButtonWithCog(
-            new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS),
-            Component.literal("More player settings"),
-            (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forPlayers(screen, this.options))
-        );
-        addOptionButtonWithCog(
-            // TODO: Fix this button not disabling when the radar is disabled, unlike the RadarOptionButton's
-            Buttons.createButton(Component.translatable("options.minimap.radar.selectmobs"))
-                .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
-                .build(),
-            Component.literal("More mob settings"),
-            (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forMobs(screen, this.options))
-        );
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
     }
 }
