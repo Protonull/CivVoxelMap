@@ -22,10 +22,9 @@ import uk.protonull.civvoxelmap.config.RadarOption;
 import uk.protonull.civvoxelmap.config.screen.MoreRadarSettingsScreen;
 import uk.protonull.civvoxelmap.gui.widgets.Buttons;
 import uk.protonull.civvoxelmap.gui.widgets.RadarOptionButton;
-import uk.protonull.civvoxelmap.mixins.accessors.ScreenAccessor;
 
 @Mixin(GuiRadarOptions.class)
-public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
+public abstract class GuiRadarOptionsMixin {
     @Final
     @Shadow
     private Screen parent;
@@ -44,8 +43,9 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
     private @NotNull Button addOptionButton(
         final @NotNull Button button
     ) {
-        RadarConfigAlignment.realignOptionWidget(button, Helpers.hardCast(this), this.optionIndex++);
-        cvm_invoker$addRenderableWidget(button);
+        final GuiRadarOptions screen = Helpers.hardCast(this);
+        RadarConfigAlignment.realignOptionWidget(button, screen, this.optionIndex++);
+        screen.addRenderableWidget(button);
         return button;
     }
 
@@ -57,7 +57,8 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
     ) {
         addOptionButton(button);
 
-        final Button cog = cvm_invoker$addRenderableWidget(
+        final GuiRadarOptions screen = Helpers.hardCast(this);
+        final Button cog = screen.addRenderableWidget(
             Buttons.createButton(Component.literal("⚙"))
                 .onPress(Objects.requireNonNull(onPress))
                 .tooltip(Objects.requireNonNull(Tooltip.create(tooltip)))
@@ -74,8 +75,8 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
     @Overwrite
     public void init() {
         final GuiRadarOptions screen = Helpers.hardCast(this);
-        cvm_invoker$clearWidgets();
-        cvm_invoker$clearFocus();
+        screen.clearWidgets();
+        screen.clearFocus();
         this.optionIndex = 0;
 
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.ENABLED, (button) -> {
@@ -118,7 +119,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_INVISIBLE));
         addOptionButton(new RadarOptionButton<>(this.options, RadarOption.BETTER_RADAR_SORTING));
 
-        cvm_invoker$addRenderableWidget(
+        screen.addRenderableWidget(
             Buttons.createButton(Component.translatable("gui.done"))
                 .onPress((button) -> VoxelConstants.getMinecraft().setScreen(this.parent))
                 .bounds(screen.width / 2 - 100, screen.height / 6 + 168, 200, 20)

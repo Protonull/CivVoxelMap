@@ -5,3 +5,7 @@ accessWidener v2 named
 
 # Use './gradlew :genSources' after any change to this file.
 # You'll probably need to reload your Gradle project too.
+
+accessible method net/minecraft/client/gui/screens/Screen addRenderableWidget (Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;
+accessible method net/minecraft/client/gui/screens/Screen clearWidgets ()V
+accessible method net/minecraft/client/gui/screens/Screen clearFocus ()V
