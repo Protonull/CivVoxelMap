@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import uk.protonull.civvoxelmap.Helpers;
 import uk.protonull.civvoxelmap.config.RadarConfigAlignment;
 import uk.protonull.civvoxelmap.config.RadarOption;
 import uk.protonull.civvoxelmap.config.screen.MoreRadarSettingsScreen;
@@ -43,7 +44,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
     private @NotNull Button addOptionButton(
         final @NotNull Button button
     ) {
-        RadarConfigAlignment.realignOptionWidget(button, (GuiRadarOptions) (Object) this, this.optionIndex++);
+        RadarConfigAlignment.realignOptionWidget(button, Helpers.hardCast(this), this.optionIndex++);
         cvm_invoker$addRenderableWidget(button);
         return button;
     }
@@ -72,7 +73,7 @@ public abstract class GuiRadarOptionsMixin implements ScreenAccessor {
     @SuppressWarnings("OverwriteAuthorRequired")
     @Overwrite
     public void init() {
-        final var screen = (GuiRadarOptions) (Object) this;
+        final GuiRadarOptions screen = Helpers.hardCast(this);
         cvm_invoker$clearWidgets();
         cvm_invoker$clearFocus();
         this.optionIndex = 0;
