@@ -5,9 +5,9 @@
     "compatibilityLevel": "JAVA_17",
     "mixins": [],
     "client": [
+        "catching.FixChatWaypointErrorMixin",
         "catching.FixEnumErrorMixin",
         "elevation.ObscureElevationMixin",
-        "FabricModVoxelMapMixin",
         "GuiAddWaypointMixin",
         "GuiMinimapOptionsMixin",
         "GuiRadarOptionsMixin",

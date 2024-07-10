@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.catching;
 
 import com.mamiyaotaru.voxelmap.VoxelConstants;
 import com.mamiyaotaru.voxelmap.fabricmod.FabricModVoxelMap;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(FabricModVoxelMap.class)
-public abstract class FabricModVoxelMapMixin {
+public abstract class FixChatWaypointErrorMixin {
     @Redirect(
         method = "onChat",
         at = @At(
@@ -19,7 +19,7 @@ public abstract class FabricModVoxelMapMixin {
             target = "Lcom/mamiyaotaru/voxelmap/util/CommandUtils;checkForWaypoints(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/GuiMessageTag;)Z"
         )
     )
-    protected boolean cvm$ensureSafeChatHandling(
+    protected boolean cvm$onChat$ensureSafeChatHandling(
         final @NotNull Component chat,
         final @NotNull GuiMessageTag indicator
     ) {
