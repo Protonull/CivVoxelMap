@@ -9,7 +9,6 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uk.protonull.civvoxelmap.MagicValues;
 import uk.protonull.civvoxelmap.gui.widgets.Buttons;
 
 public interface RadarOption<T> {
@@ -80,6 +79,9 @@ public interface RadarOption<T> {
 
     enum RadarMode { FULL, SIMPLE }
     RadarOption<RadarMode> MODE = new RadarOption<>() {
+        private static final int RADAR_MODE_SIMPLE_RAW = 1;
+        private static final int RADAR_MODE_FULL_RAW = 2;
+
         @Override
         public @NotNull Component getLabel(
             final @NotNull RadarMode value
@@ -90,7 +92,7 @@ public interface RadarOption<T> {
         public @NotNull RadarMode getValue(
             final @NotNull RadarSettingsManager manager
         ) {
-            return manager.radarMode == MagicValues.RADAR_MODE_SIMPLE ? RadarMode.SIMPLE : RadarMode.FULL;
+            return manager.radarMode == RADAR_MODE_SIMPLE_RAW ? RadarMode.SIMPLE : RadarMode.FULL;
         }
         @Override
         public void setValue(
@@ -98,8 +100,8 @@ public interface RadarOption<T> {
             final @NotNull RadarMode value
         ) {
             manager.radarMode = switch (value) {
-                case FULL -> MagicValues.RADAR_MODE_FULL;
-                case SIMPLE -> MagicValues.RADAR_MODE_SIMPLE;
+                case FULL -> RADAR_MODE_FULL_RAW;
+                case SIMPLE -> RADAR_MODE_SIMPLE_RAW;
             };
         }
         @Override
