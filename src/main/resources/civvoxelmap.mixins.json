@@ -8,14 +8,14 @@
         "catching.FixChatWaypointErrorMixin",
         "catching.FixEnumErrorMixin",
         "elevation.ObscureElevationMixin",
+        "radar.RadarMixin",
+        "radar.RadarSimpleMixin",
         "settings.GuiMinimapOptionsMixin",
         "settings.GuiRadarOptionsMixin",
         "settings.MapSettingsManagerMixin",
         "settings.RadarSettingsManagerMixin",
         "settings.WaypointPickerFixMixin",
-        "textures.AlwaysUseHigherResTexturesMixin",
-        "RadarMixin",
-        "RadarSimpleMixin"
+        "textures.AlwaysUseHigherResTexturesMixin"
     ],
     "injectors": {
         "defaultRequire": 1

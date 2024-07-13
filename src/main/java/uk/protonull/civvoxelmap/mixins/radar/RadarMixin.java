@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.radar;
 
 import com.mamiyaotaru.voxelmap.Radar;
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
@@ -30,7 +30,7 @@ public abstract class RadarMixin {
         ),
         remap = false
     )
-    private @NotNull Iterator<Entity> cvm_modify_variable$filterOutCrouchingPlayers(
+    private @NotNull Iterator<Entity> cvm$filterEntities(
         final @NotNull Iterator<Entity> iterator
     ) {
         return ExtraRadarSettings.filterEntities(iterator, (ExtraRadarSettings.Accessor) this.options);
@@ -49,7 +49,7 @@ public abstract class RadarMixin {
         ),
         remap = false
     )
-    private void cvm_redirect$radarEntitySorting(
+    private void cvm$sortEntities(
         final @NotNull ArrayList<Contact> entities,
         final @NotNull Comparator<Contact> elevationComparator
     ) {
