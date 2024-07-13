@@ -13,7 +13,7 @@
         "settings.MapSettingsManagerMixin",
         "settings.RadarSettingsManagerMixin",
         "settings.WaypointPickerFixMixin",
-        "MapMixin",
+        "textures.AlwaysUseHigherResTexturesMixin",
         "RadarMixin",
         "RadarSimpleMixin"
     ],
