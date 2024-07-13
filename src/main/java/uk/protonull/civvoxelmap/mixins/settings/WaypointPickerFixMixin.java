@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.mamiyaotaru.voxelmap.gui.GuiAddWaypoint;
 import org.jetbrains.annotations.NotNull;
@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GuiAddWaypoint.class)
-public abstract class GuiAddWaypointMixin {
+public abstract class WaypointPickerFixMixin {
     @Shadow(remap = false)
     private boolean choosingColor;
     @Shadow(remap = false)
@@ -21,7 +21,7 @@ public abstract class GuiAddWaypointMixin {
             target = "Lcom/mamiyaotaru/voxelmap/gui/GuiAddWaypoint;popupOpen()Z"
         )
     )
-    private boolean cvm_redirect$isPopupOpen(
+    private boolean cvm$isPopupOpen(
         final @NotNull GuiAddWaypoint instance
     ) {
         return this.choosingColor || this.choosingIcon;

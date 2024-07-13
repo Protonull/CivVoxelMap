@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import java.io.PrintWriter;
@@ -49,18 +49,18 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     private static final String RADAR_SORT_KEY = "BetterRadarSort";
 
     @Unique
-    private boolean cvm_unique$hideElevation = true;
+    private boolean cvm$hideElevation = true;
     @Unique
-    private boolean cvm_unique$hideSneaking = false;
+    private boolean cvm$hideSneaking = false;
     @Unique
-    private boolean cvm_unique$hideInvisible = false;
+    private boolean cvm$hideInvisible = false;
     @Unique
-    private boolean cvm_unique$useBetterRadarSort = true;
+    private boolean cvm$useBetterRadarSort = true;
 
     @Unique
     @Override
     public boolean hideElevation() {
-        return this.cvm_unique$hideElevation;
+        return this.cvm$hideElevation;
     }
 
     @Unique
@@ -68,13 +68,13 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     public void hideElevation(
         final boolean hideElevation
     ) {
-        this.cvm_unique$hideElevation = hideElevation;
+        this.cvm$hideElevation = hideElevation;
     }
 
     @Unique
     @Override
     public boolean hideSneaking() {
-        return this.cvm_unique$hideSneaking;
+        return this.cvm$hideSneaking;
     }
 
     @Unique
@@ -82,13 +82,13 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     public void hideSneaking(
         final boolean hideSneaking
     ) {
-        this.cvm_unique$hideSneaking = hideSneaking;
+        this.cvm$hideSneaking = hideSneaking;
     }
 
     @Unique
     @Override
     public boolean hideInvisible() {
-        return this.cvm_unique$hideInvisible;
+        return this.cvm$hideInvisible;
     }
 
     @Unique
@@ -96,13 +96,13 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     public void hideInvisible(
         final boolean hideInvisible
     ) {
-        this.cvm_unique$hideInvisible = hideInvisible;
+        this.cvm$hideInvisible = hideInvisible;
     }
 
     @Unique
     @Override
     public boolean useBetterRadarSort() {
-        return this.cvm_unique$useBetterRadarSort;
+        return this.cvm$useBetterRadarSort;
     }
 
     @Unique
@@ -110,7 +110,7 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
     public void useBetterRadarSort(
         final boolean useBetterRadarSort
     ) {
-        this.cvm_unique$useBetterRadarSort = useBetterRadarSort;
+        this.cvm$useBetterRadarSort = useBetterRadarSort;
     }
 
     @ModifyVariable(
@@ -121,7 +121,7 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         ),
         remap = false
     )
-    private @NotNull String @NotNull [] cvm_modify_variable$loadExtraSettings(
+    private @NotNull String @NotNull [] cvm$loadSettings$loadExtraSettings(
         final @NotNull String @NotNull [] row
     ) {
         if (HIDE_ELEVATION_KEY.equals(row[0])) {
@@ -149,7 +149,7 @@ public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Ac
         argsOnly = true,
         remap = false
     )
-    private @NotNull PrintWriter cvm_modify_variable$saveExtraSettings(
+    private @NotNull PrintWriter cvm$saveAll$saveExtraSettings(
         final @NotNull PrintWriter out
     ) {
         out.println(HIDE_ELEVATION_KEY + ":" + hideElevation());

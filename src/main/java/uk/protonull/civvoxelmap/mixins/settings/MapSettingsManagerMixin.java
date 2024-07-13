@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.mamiyaotaru.voxelmap.MapSettingsManager;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +10,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MapSettingsManager.class)
 public abstract class MapSettingsManagerMixin {
-    @Shadow(remap = false)
+    @Shadow(
+        remap = false
+    )
     protected boolean showCaves;
 
     @Inject(
@@ -18,7 +20,7 @@ public abstract class MapSettingsManagerMixin {
         at = @At("TAIL"),
         remap = false
     )
-    private void cvm_inject$disableCaveModeByDefault(
+    private void cvm$constructor$disableCaveModeByDefault(
         final @NotNull CallbackInfo ci
     ) {
         this.showCaves = false;

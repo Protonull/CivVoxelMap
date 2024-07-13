@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mamiyaotaru.voxelmap.gui.GuiMinimapOptions;
@@ -26,7 +26,7 @@ public abstract class GuiMinimapOptionsMixin {
             shift = At.Shift.BEFORE
         )
     )
-    private void cvm_inject$addTooltipWarnings(
+    private void cvm$init$addTooltipWarnings(
         final @NotNull CallbackInfo ci,
         final @NotNull @Local GuiOptionButtonMinimap button
     ) {

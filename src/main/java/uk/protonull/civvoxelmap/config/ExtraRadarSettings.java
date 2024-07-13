@@ -8,9 +8,10 @@ import java.util.function.Predicate;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
+import uk.protonull.civvoxelmap.mixins.settings.RadarSettingsManagerMixin;
 
 public final class ExtraRadarSettings {
-    /** {@link uk.protonull.civvoxelmap.mixins.RadarSettingsManagerMixin} */
+    /** {@link RadarSettingsManagerMixin} */
     public interface Accessor {
         boolean hideElevation();
         void hideElevation(boolean hideElevation);

@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins;
+package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.VoxelConstants;
@@ -13,7 +13,6 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import uk.protonull.civvoxelmap.Helpers;
@@ -37,25 +36,25 @@ public abstract class GuiRadarOptionsMixin {
     protected final Component screenTitle = Component.translatable("options.minimap.radar.title");
 
     @Unique
-    private int optionIndex;
+    private int cvm$optionIndex;
 
     @Unique
-    private @NotNull Button addOptionButton(
+    private @NotNull Button cvm$addOptionButton(
         final @NotNull Button button
     ) {
         final GuiRadarOptions screen = Helpers.hardCast(this);
-        RadarConfigAlignment.realignOptionWidget(button, screen, this.optionIndex++);
+        RadarConfigAlignment.realignOptionWidget(button, screen, this.cvm$optionIndex++);
         screen.addRenderableWidget(button);
         return button;
     }
 
     @Unique
-    private void addOptionButtonWithCog(
+    private void cvm$addOptionButtonWithCog(
         final @NotNull Button button,
         final @NotNull Component tooltip,
         final @NotNull Button.OnPress onPress
     ) {
-        addOptionButton(button);
+        cvm$addOptionButton(button);
 
         final GuiRadarOptions screen = Helpers.hardCast(this);
         final Button cog = screen.addRenderableWidget(
@@ -71,37 +70,36 @@ public abstract class GuiRadarOptionsMixin {
         cog.setY(button.getY());
     }
 
-    @SuppressWarnings("OverwriteAuthorRequired")
-    @Overwrite
+    //@Override
     public void init() {
         final GuiRadarOptions screen = Helpers.hardCast(this);
         screen.clearWidgets();
         screen.clearFocus();
-        this.optionIndex = 0;
+        this.cvm$optionIndex = 0;
 
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.ENABLED, (button) -> {
+        cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.ENABLED, (button) -> {
             for (final GuiEventListener widget : screen.children()) {
                 if (widget instanceof final RadarOptionButton<?> optionButton) {
                     optionButton.update();
                 }
             }
         }));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.MODE, (button) -> init()));
+        cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.MODE, (button) -> init()));
 
         switch (RadarOption.MODE.getValue(this.options)) {
             case SIMPLE -> {
-                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_HOSTILES));
-                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
-                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
-                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_FACING));
+                cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_HOSTILES));
+                cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_NEUTRALS));
+                cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS));
+                cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.SHOW_FACING));
             }
             case FULL -> {
-                addOptionButtonWithCog(
+                cvm$addOptionButtonWithCog(
                     new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS),
                     Component.literal("More player settings"),
                     (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forPlayers(screen, this.options))
                 );
-                addOptionButtonWithCog(
+                cvm$addOptionButtonWithCog(
                     // TODO: Fix this button not disabling when the radar is disabled, unlike the RadarOptionButton's
                     Buttons.createButton(Component.translatable("options.minimap.radar.selectmobs"))
                         .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
@@ -109,15 +107,15 @@ public abstract class GuiRadarOptionsMixin {
                     Component.literal("More mob settings"),
                     (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forMobs(screen, this.options))
                 );
-                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
-                addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
+                cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));
+                cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.OUTLINES));
             }
         }
 
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_INVISIBLE));
-        addOptionButton(new RadarOptionButton<>(this.options, RadarOption.BETTER_RADAR_SORTING));
+        cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_ELEVATION));
+        cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_SNEAKING));
+        cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_INVISIBLE));
+        cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.BETTER_RADAR_SORTING));
 
         screen.addRenderableWidget(
             Buttons.createButton(Component.translatable("gui.done"))

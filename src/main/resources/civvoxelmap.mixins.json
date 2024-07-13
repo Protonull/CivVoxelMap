@@ -8,13 +8,13 @@
         "catching.FixChatWaypointErrorMixin",
         "catching.FixEnumErrorMixin",
         "elevation.ObscureElevationMixin",
-        "GuiAddWaypointMixin",
-        "GuiMinimapOptionsMixin",
-        "GuiRadarOptionsMixin",
+        "settings.GuiMinimapOptionsMixin",
+        "settings.GuiRadarOptionsMixin",
+        "settings.MapSettingsManagerMixin",
+        "settings.RadarSettingsManagerMixin",
+        "settings.WaypointPickerFixMixin",
         "MapMixin",
-        "MapSettingsManagerMixin",
         "RadarMixin",
-        "RadarSettingsManagerMixin",
         "RadarSimpleMixin"
     ],
     "injectors": {
