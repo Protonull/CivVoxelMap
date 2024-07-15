@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.config;
+package uk.protonull.civvoxelmap.features.config;
 
 import com.mamiyaotaru.voxelmap.util.Contact;
 import java.util.ArrayList;

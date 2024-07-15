@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.gui.widgets;
+package uk.protonull.civvoxelmap.features.config.widgets;
 
 import java.util.Objects;
 import net.minecraft.client.gui.components.Button;

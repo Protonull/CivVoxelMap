@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.config.screen;
+package uk.protonull.civvoxelmap.features.config.screen;
 
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.VoxelConstants;
@@ -9,10 +9,10 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
-import uk.protonull.civvoxelmap.config.RadarConfigAlignment;
-import uk.protonull.civvoxelmap.config.RadarOption;
-import uk.protonull.civvoxelmap.gui.widgets.Buttons;
-import uk.protonull.civvoxelmap.gui.widgets.RadarOptionButton;
+import uk.protonull.civvoxelmap.features.config.RadarConfigAlignment;
+import uk.protonull.civvoxelmap.features.config.RadarOption;
+import uk.protonull.civvoxelmap.features.config.widgets.Buttons;
+import uk.protonull.civvoxelmap.features.config.widgets.RadarOptionButton;
 
 public final class MoreRadarSettingsScreen extends Screen {
     private final Screen parentScreen;

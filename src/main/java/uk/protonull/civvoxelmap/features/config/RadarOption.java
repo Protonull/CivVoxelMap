@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.config;
+package uk.protonull.civvoxelmap.features.config;
 
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.gui.overridden.EnumOptionsMinimap;
@@ -9,7 +9,7 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uk.protonull.civvoxelmap.gui.widgets.Buttons;
+import uk.protonull.civvoxelmap.features.config.widgets.Buttons;
 
 public interface RadarOption<T> {
     @NotNull Component getLabel(

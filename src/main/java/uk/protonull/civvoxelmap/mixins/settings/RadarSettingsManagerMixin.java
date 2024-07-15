@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
+import uk.protonull.civvoxelmap.features.config.ExtraRadarSettings;
 
 @Mixin(RadarSettingsManager.class)
 public abstract class RadarSettingsManagerMixin implements ExtraRadarSettings.Accessor {

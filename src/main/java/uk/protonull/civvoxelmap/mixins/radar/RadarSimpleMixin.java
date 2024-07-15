@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
+import uk.protonull.civvoxelmap.features.config.ExtraRadarSettings;
 
 @Mixin(RadarSimple.class)
 public abstract class RadarSimpleMixin {

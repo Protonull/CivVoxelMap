@@ -1,11 +1,11 @@
-package uk.protonull.civvoxelmap.gui.widgets;
+package uk.protonull.civvoxelmap.features.config.widgets;
 
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import java.util.Objects;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
-import uk.protonull.civvoxelmap.config.RadarOption;
+import uk.protonull.civvoxelmap.features.config.RadarOption;
 
 public class RadarOptionButton<T> extends Button {
     protected final RadarSettingsManager manager;

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import uk.protonull.civvoxelmap.config.ExtraRadarSettings;
+import uk.protonull.civvoxelmap.features.config.ExtraRadarSettings;
 
 /**
  * Mixins aren't really sophisticated enough to target the code within the spaghetti of VoxelMap that darkens/fades

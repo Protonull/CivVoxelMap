@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.config;
+package uk.protonull.civvoxelmap.features.config;
 
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.screens.Screen;

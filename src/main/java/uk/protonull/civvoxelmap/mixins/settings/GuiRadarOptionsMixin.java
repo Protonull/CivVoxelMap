@@ -16,11 +16,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import uk.protonull.civvoxelmap.Helpers;
-import uk.protonull.civvoxelmap.config.RadarConfigAlignment;
-import uk.protonull.civvoxelmap.config.RadarOption;
-import uk.protonull.civvoxelmap.config.screen.MoreRadarSettingsScreen;
-import uk.protonull.civvoxelmap.gui.widgets.Buttons;
-import uk.protonull.civvoxelmap.gui.widgets.RadarOptionButton;
+import uk.protonull.civvoxelmap.features.config.RadarConfigAlignment;
+import uk.protonull.civvoxelmap.features.config.RadarOption;
+import uk.protonull.civvoxelmap.features.config.screen.MoreRadarSettingsScreen;
+import uk.protonull.civvoxelmap.features.config.widgets.Buttons;
+import uk.protonull.civvoxelmap.features.config.widgets.RadarOptionButton;
 
 @Mixin(GuiRadarOptions.class)
 public abstract class GuiRadarOptionsMixin {
