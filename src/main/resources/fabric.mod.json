@@ -16,7 +16,7 @@
     "environment": "client",
     "entrypoints": {
         "modmenu": [
-            "uk.protonull.civvoxelmap.integrations.modmenu.ModMenuIntegration"
+            "uk.protonull.civvoxelmap.features.modmenu.ModMenuIntegration"
         ]
     },
     "depends": {

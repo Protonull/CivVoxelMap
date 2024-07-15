@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.integrations.modmenu;
+package uk.protonull.civvoxelmap.features.modmenu;
 
 import com.mamiyaotaru.voxelmap.gui.GuiMinimapOptions;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
