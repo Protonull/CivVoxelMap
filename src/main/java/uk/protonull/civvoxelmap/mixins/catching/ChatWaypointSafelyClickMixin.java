@@ -12,7 +12,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CommandUtils.class)
 public abstract class ChatWaypointSafelyClickMixin {
-    @Shadow
+    @Shadow(
+        remap = false
+    )
     private static @Nullable Waypoint createWaypointFromChat(
         final @NotNull String details
     ) {
