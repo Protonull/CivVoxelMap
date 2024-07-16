@@ -29,6 +29,8 @@ legal.
 - Fixes chat-waypoint errors resulting from chat replaying or other mods which print waypoints to the chat before
   VoxelMap is ready to receive them.
 
+- Fixes VoxelMap command errors related to signed command arguments.
+
 ## Requirements
 
 - Fabric Loader: `0.15.11` (or newer)

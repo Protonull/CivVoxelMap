@@ -40,6 +40,9 @@ dependencies {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
+
+    // This is literally only here to make Minecraft SHUT UP about non-signed messages while testing.
+    modLocalRuntime("maven.modrinth:no-chat-reports:Pjto4zdj")
 }
 
 repositories {

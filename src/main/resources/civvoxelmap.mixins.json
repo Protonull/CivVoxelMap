@@ -9,6 +9,8 @@
         "catching.ChatWaypointSafelyClickMixin",
         "catching.ChatWaypointSafelyParseMixin",
         "catching.FixEnumErrorMixin",
+        "commands.DisableVoxelMapCommands",
+        "commands.ReplaceVoxelMapCommands",
         "elevation.ObscureElevationMixin",
         "radar.RadarMixin",
         "radar.RadarSimpleMixin",
