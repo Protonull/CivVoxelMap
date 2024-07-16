@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public final class AttemptWaypointParse {
-    public static boolean isValidCoordinate(
+    public static boolean isValidInteger(
         final @NotNull String coordinate
     ) {
         try {
@@ -32,13 +32,31 @@ public final class AttemptWaypointParse {
         }
     }
 
+    public static boolean isValidFloat(
+        final @NotNull String coordinate
+    ) {
+        try {
+            Float.parseFloat(coordinate);
+            return true;
+        }
+        catch (final NumberFormatException ignored) {
+            return false;
+        }
+    }
+
     public static @Nullable Waypoint attemptParse(
         final @NotNull String raw
     ) {
+        boolean hasName = false;
         boolean hasX = false;
         boolean hasY = false;
         boolean hasZ = false;
         boolean hasDimension = false;
+        boolean hasEnabled = false;
+        boolean hasRed = false;
+        boolean hasGreen = false;
+        boolean hasBlue = false;
+        boolean hasIcon = false;
         for (final String pair : StringUtils.split(raw, ",")) {
             final String key, value; {
                 final int splitterIndex = pair.indexOf(':');
@@ -52,29 +70,36 @@ public final class AttemptWaypointParse {
                 continue;
             }
             switch (key) {
+                case "name" -> {
+                    if (hasName) {
+                        return null;
+                    }
+                    hasName = true;
+                    continue;
+                }
                 case "x" -> {
-                    if (hasX || !AttemptWaypointParse.isValidCoordinate(value)) {
+                    if (hasX || !isValidInteger(value)) {
                         return null;
                     }
                     hasX = true;
                     continue;
                 }
                 case "y" -> {
-                    if (hasY || !AttemptWaypointParse.isValidCoordinate(value)) {
+                    if (hasY || !isValidInteger(value)) {
                         return null;
                     }
                     hasY = true;
                     continue;
                 }
                 case "z" -> {
-                    if (hasZ || !AttemptWaypointParse.isValidCoordinate(value)) {
+                    if (hasZ || !isValidInteger(value)) {
                         return null;
                     }
                     hasZ = true;
                     continue;
                 }
                 case "dim", "dimension" -> {
-                    if (hasDimension || !AttemptWaypointParse.isValidResourceLocation(value)) {
+                    if (hasDimension || !isValidResourceLocation(value)) {
                         return null;
                     }
                     hasDimension = true;
@@ -85,7 +110,7 @@ public final class AttemptWaypointParse {
                         return null;
                     }
                     for (final String dimension : StringUtils.split(value, "#")) {
-                        if (!AttemptWaypointParse.isValidResourceLocation(dimension)) {
+                        if (!isValidResourceLocation(dimension)) {
                             return null;
                         }
                     }
@@ -99,9 +124,53 @@ public final class AttemptWaypointParse {
                     hasDimension = true;
                     continue;
                 }
+                case "enabled" -> {
+                    if (hasEnabled) {
+                        return null;
+                    }
+                    hasEnabled = true;
+                    continue;
+                }
+                case "red" -> {
+                    if (hasRed || isValidFloat(value)) {
+                        return null;
+                    }
+                    hasRed = true;
+                    continue;
+                }
+                case "green" -> {
+                    if (hasGreen || isValidFloat(value)) {
+                        return null;
+                    }
+                    hasGreen = true;
+                    continue;
+                }
+                case "blue" -> {
+                    if (hasBlue || isValidFloat(value)) {
+                        return null;
+                    }
+                    hasBlue = true;
+                    continue;
+                }
+                case "color", "colour" -> {
+                    if (hasRed || hasGreen || hasBlue || isValidInteger(value)) {
+                        return null;
+                    }
+                    hasRed = true;
+                    hasGreen = true;
+                    hasBlue = true;
+                    continue;
+                }
+                case "suffix", "icon" -> {
+                    if (hasIcon) {
+                        return null;
+                    }
+                    hasIcon = true;
+                    continue;
+                }
             }
         }
-        if (hasX && hasY && hasZ && hasDimension) {
+        if (hasX && hasZ) {
             return new Waypoint("", 0, 0, 0, false, 0f, 0f, 0f, "", null, null);
         }
         return null;
