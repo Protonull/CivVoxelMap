@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(FabricModVoxelMap.class)
-public abstract class FixChatWaypointErrorMixin {
+public abstract class ChatWaypointSafelyParseMixin {
     @Redirect(
         method = "onChat",
         at = @At(
@@ -19,7 +19,7 @@ public abstract class FixChatWaypointErrorMixin {
             target = "Lcom/mamiyaotaru/voxelmap/util/CommandUtils;checkForWaypoints(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/GuiMessageTag;)Z"
         )
     )
-    protected boolean cvm$onChat$ensureSafeChatHandling(
+    protected boolean cvm$onChat$safelyCatchError(
         final @NotNull Component chat,
         final @NotNull GuiMessageTag indicator
     ) {

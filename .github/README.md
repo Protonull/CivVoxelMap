@@ -26,6 +26,9 @@ legal.
 
 - Entities on radar are now ordered by default with the following priority: players > hostiles > other.
 
+- Fixes chat-waypoint errors resulting from chat replaying or other mods which print waypoints to the chat before
+  VoxelMap is ready to receive them.
+
 ## Requirements
 
 - Fabric Loader: `0.15.11` (or newer)
