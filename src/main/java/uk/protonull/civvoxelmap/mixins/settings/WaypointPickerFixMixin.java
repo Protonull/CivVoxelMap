@@ -1,11 +1,15 @@
 package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.mamiyaotaru.voxelmap.gui.GuiAddWaypoint;
+import net.minecraft.client.gui.components.events.GuiEventListener;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import uk.protonull.civvoxelmap.Helpers;
 
 @Mixin(GuiAddWaypoint.class)
 public abstract class WaypointPickerFixMixin {
@@ -14,27 +18,33 @@ public abstract class WaypointPickerFixMixin {
     @Shadow(remap = false)
     private boolean choosingIcon;
 
-    @Redirect(
+    @Inject(
         method = "keyPressed",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiAddWaypoint;popupOpen()Z"
-        )
+        at = @At("TAIL"),
+        cancellable = true,
+        remap = false
     )
-    private boolean cvm$isPopupOpen(
-        final @NotNull GuiAddWaypoint instance
+    protected void cvm$closePopupOnEsc(
+        final int keyCode,
+        final int scanCode,
+        final int modifiers,
+        final @NotNull CallbackInfoReturnable<Boolean> cir
     ) {
-        return this.choosingColor || this.choosingIcon;
+        final GuiAddWaypoint self = Helpers.hardCast(this);
+        // .popupOpen() is a misnomer, it returns true when the screen is open, but the "popups" are closed.
+        if (!self.popupOpen() && keyCode == GLFW.GLFW_KEY_ESCAPE) {
+            this.choosingColor = false;
+            this.choosingIcon = false;
+            for (final GuiEventListener element : self.getButtonList()) {
+                element.setFocused(false);
+            }
+            cir.setReturnValue(true);
+        }
     }
 
     //@Override
     public boolean shouldCloseOnEsc() {
         // Allow players to ESC out of choosing a waypoint colour / icon
-        if (this.choosingColor || this.choosingIcon) {
-            this.choosingColor = false;
-            this.choosingIcon = false;
-            return false;
-        }
-        return true;
+        return !this.choosingColor && !this.choosingIcon;
     }
 }
