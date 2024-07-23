@@ -21,8 +21,7 @@ public abstract class WaypointPickerFixMixin {
     @Inject(
         method = "keyPressed",
         at = @At("TAIL"),
-        cancellable = true,
-        remap = false
+        cancellable = true
     )
     protected void cvm$closePopupOnEsc(
         final int keyCode,
