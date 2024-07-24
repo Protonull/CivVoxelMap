@@ -132,28 +132,28 @@ public final class AttemptWaypointParse {
                     continue;
                 }
                 case "red" -> {
-                    if (hasRed || isValidFloat(value)) {
+                    if (hasRed || !isValidFloat(value)) {
                         return null;
                     }
                     hasRed = true;
                     continue;
                 }
                 case "green" -> {
-                    if (hasGreen || isValidFloat(value)) {
+                    if (hasGreen || !isValidFloat(value)) {
                         return null;
                     }
                     hasGreen = true;
                     continue;
                 }
                 case "blue" -> {
-                    if (hasBlue || isValidFloat(value)) {
+                    if (hasBlue || !isValidFloat(value)) {
                         return null;
                     }
                     hasBlue = true;
                     continue;
                 }
                 case "color", "colour" -> {
-                    if (hasRed || hasGreen || hasBlue || isValidInteger(value)) {
+                    if (hasRed || hasGreen || hasBlue || !isValidInteger(value)) {
                         return null;
                     }
                     hasRed = true;
