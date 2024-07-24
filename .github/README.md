@@ -35,3 +35,8 @@ legal.
 
 - Fabric Loader: `0.15.11` (or newer)
 - [Fabric API](https://modrinth.com/mod/fabric-api): `0.96.11+1.20.4` (or newer)
+
+## Recommended
+
+- [ModMenu](https://modrinth.com/mod/modmenu): `v9.0.0` (or newer)
+
