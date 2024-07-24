@@ -47,4 +47,4 @@ legal.
 
 - Is there already a Github Issue for this problem? [Check here](https://github.com/Protonull/CivVoxelMap/issues?q=sort:updated-desc).
 
-- Otherwise, feel free to [open an issue](https://github.com/Protonull/CivVoxelMap/issues/new).
+- Otherwise, feel free to [open an issue](https://github.com/Protonull/CivVoxelMap/issues/new?assignees=Protonull&labels=bug&template=bug_report.md&title=%5BBUG%5D+Something+went+wrong%21+Halp%21).
