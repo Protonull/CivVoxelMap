@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import uk.protonull.civvoxelmap.Helpers;
@@ -70,7 +71,11 @@ public abstract class GuiRadarOptionsMixin {
         cog.setY(button.getY());
     }
 
-    //@Override
+    /**
+     * @author Protonull
+     * @reason This Mixin is basically just replacing the class entirely.
+     */
+    @Overwrite
     public void init() {
         final GuiRadarOptions screen = Helpers.hardCast(this);
         screen.clearWidgets();
