@@ -40,3 +40,11 @@ legal.
 
 - [ModMenu](https://modrinth.com/mod/modmenu): `v9.0.0` (or newer)
 
+## Having issues?
+
+- Are you using the [latest version](https://github.com/Protonull/CivVoxelMap/releases/latest)? If not, it's possible
+  that the issue has already been fixed.
+
+- Is there already a Github Issue for this problem? [Check here](https://github.com/Protonull/CivVoxelMap/issues?q=sort:updated-desc).
+
+- Otherwise, feel free to [open an issue](https://github.com/Protonull/CivVoxelMap/issues/new).
