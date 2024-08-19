@@ -13,7 +13,8 @@ public abstract class AlwaysUseHigherResTexturesMixin {
         method = "drawWaypoint",
         at = @At("HEAD"),
         ordinal = 2,
-        argsOnly = true
+        argsOnly = true,
+        remap = false
     )
     private int cvm$drawWaypoint$scale$neverUseSmallWaypointIcons(
         final int scScale

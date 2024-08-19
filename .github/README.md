@@ -1,6 +1,6 @@
 # CivVoxelMap
 
-This is a 'fork' of [VoxelMap](https://modrinth.com/mod/voxelmap-updated) for 1.20.4 that's [CivMC](https://civmc.net)
+This is a 'fork' of [VoxelMap](https://modrinth.com/mod/voxelmap-updated) for 1.20.6 that's [CivMC](https://civmc.net)
 legal.
 
 ## Changes
@@ -33,12 +33,12 @@ legal.
 
 ## Requirements
 
-- Fabric Loader: `0.15.11` (or newer)
-- [Fabric API](https://modrinth.com/mod/fabric-api): `0.96.11+1.20.4` (or newer)
+- Fabric Loader: `0.16.2` (or newer)
+- [Fabric API](https://modrinth.com/mod/fabric-api): `0.100.8+1.20.6` (or newer)
 
 ## Recommended
 
-- [ModMenu](https://modrinth.com/mod/modmenu): `v9.0.0` (or newer)
+- [ModMenu](https://modrinth.com/mod/modmenu): `v10.0.0` (or newer)
 
 ## Having issues?
 

@@ -29,20 +29,21 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.extra["fabric_loader_version"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fabric_api_version"]}")
 
-    // https://modrinth.com/mod/voxelmap-updated/version/1.20.4-1.12.17
-    "maven.modrinth:voxelmap-updated:VYowiAJp".also {
+    // https://modrinth.com/mod/voxelmap-updated/version/1.20.6-1.12.19
+    "maven.modrinth:voxelmap-updated:yfOx8RrC".also {
         modImplementation(it)
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/9.0.0
-    "maven.modrinth:modmenu:sjtVVlsA".also {
+    // https://modrinth.com/mod/modmenu/version/10.0.0
+    "maven.modrinth:modmenu:HLa8flfl".also {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
 
     // This is literally only here to make Minecraft SHUT UP about non-signed messages while testing.
-    modLocalRuntime("maven.modrinth:no-chat-reports:Pjto4zdj")
+    // https://modrinth.com/mod/no-chat-reports/version/Fabric-1.20.6-v2.7.1
+    modLocalRuntime("maven.modrinth:no-chat-reports:MNkuIjea")
 }
 
 repositories {
@@ -59,8 +60,8 @@ repositories {
 
 java {
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 tasks {
@@ -71,7 +72,7 @@ tasks {
     }
     compileJava {
         options.encoding = "UTF-8"
-        options.release.set(17)
+        options.release.set(21)
     }
     processResources {
         filesMatching("fabric.mod.json") {
