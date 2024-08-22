@@ -24,7 +24,7 @@ public final class AttemptWaypointParse {
         final @NotNull String location
     ) {
         try {
-            new ResourceLocation(location);
+            ResourceLocation.tryParse(location);
             return true;
         }
         catch (final ResourceLocationException ignore) {

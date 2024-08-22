@@ -2,7 +2,7 @@
 // See Gradle's releases here: https://gradle.org/releases/
 
 plugins {
-    id("fabric-loom") version "1.6-SNAPSHOT"
+    id("fabric-loom") version "1.7-SNAPSHOT"
 }
 
 version = "${rootProject.extra["mod_version"]}-${project.extra["minecraft_version"]}"
@@ -22,28 +22,28 @@ dependencies {
         @Suppress("UnstableApiUsage")
         mappings(layered {
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${project.extra["minecraft_version"]}:${project.extra["parchment_version"]}@zip")
+            parchment("org.parchmentmc.data:${project.extra["parchment_name"]}:${project.extra["parchment_version"]}@zip")
         })
     }
 
     modImplementation("net.fabricmc:fabric-loader:${project.extra["fabric_loader_version"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fabric_api_version"]}")
 
-    // https://modrinth.com/mod/voxelmap-updated/version/1.20.6-1.12.19
-    "maven.modrinth:voxelmap-updated:yfOx8RrC".also {
+    // https://modrinth.com/mod/voxelmap-updated/version/1.21-1.13.1
+    "maven.modrinth:voxelmap-updated:QZuVdvFR".also {
         modImplementation(it)
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/10.0.0
-    "maven.modrinth:modmenu:HLa8flfl".also {
+    // https://modrinth.com/mod/modmenu/version/11.0.1
+    "maven.modrinth:modmenu:xhN1IvHi".also {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
 
     // This is literally only here to make Minecraft SHUT UP about non-signed messages while testing.
-    // https://modrinth.com/mod/no-chat-reports/version/Fabric-1.20.6-v2.7.1
-    modLocalRuntime("maven.modrinth:no-chat-reports:MNkuIjea")
+    // https://modrinth.com/mod/no-chat-reports/version/Fabric-1.21-v2.8.0
+    modLocalRuntime("maven.modrinth:no-chat-reports:riMhCAII")
 }
 
 repositories {
