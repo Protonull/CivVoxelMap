@@ -57,9 +57,8 @@ public final class MoreRadarSettingsScreen extends Screen {
         final int mouseY,
         final float delta
     ) {
-        renderBackground(drawContext, mouseX, mouseY, delta);
-        drawContext.drawCenteredString(this.font, this.title, this.width / 2, 20, 0xFFFFFF);
         super.render(drawContext, mouseX, mouseY, delta);
+        drawContext.drawCenteredString(this.font, this.title, this.width / 2, 20, 0xFFFFFF);
     }
 
     public static @NotNull MoreRadarSettingsScreen forPlayers(
