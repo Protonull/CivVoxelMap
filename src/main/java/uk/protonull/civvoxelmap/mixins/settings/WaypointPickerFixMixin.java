@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import uk.protonull.civvoxelmap.Helpers;
 
 @Mixin(GuiAddWaypoint.class)
 public abstract class WaypointPickerFixMixin {
@@ -29,7 +28,7 @@ public abstract class WaypointPickerFixMixin {
         final int modifiers,
         final @NotNull CallbackInfoReturnable<Boolean> cir
     ) {
-        final GuiAddWaypoint self = Helpers.hardCast(this);
+        final var self = (GuiAddWaypoint) (Object) this;
         // .popupOpen() is a misnomer, it returns true when the screen is open, but the "popups" are closed.
         if (!self.popupOpen() && keyCode == InputConstants.KEY_ESCAPE) {
             this.choosingColor = false;
