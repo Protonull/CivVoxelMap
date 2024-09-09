@@ -11,7 +11,7 @@ legal.
 - CivMC bans reading entity equipment so player and mob helmets no longer appear in radar by default. Also added a
   warning to the option buttons of the feature's illegality.
 
-- CivMC bans reading entity elevation so players and mobs are no longer darkened or faded by how far above or above they
+- CivMC bans reading entity elevation so players and mobs are no longer darkened or faded by how far above or below they
   are from you. Also added a warning to the option button of the feature's illegality.
 
 - Added a fair-play option to disable seeing crouched entities in your radar.
