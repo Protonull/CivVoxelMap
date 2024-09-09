@@ -5,7 +5,6 @@ import com.mamiyaotaru.voxelmap.gui.overridden.EnumOptionsMinimap;
 import java.util.function.Supplier;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -50,7 +49,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWRADAR.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWRADAR.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -86,7 +85,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull RadarMode value
         ) {
-            return Buttons.enumMessage(I18n.get(EnumOptionsMinimap.RADARMODE.getName()), value);
+            return Buttons.enumMessage(Component.translatable(EnumOptionsMinimap.RADARMODE.getName()), value);
         }
         @Override
         public @NotNull RadarMode getValue(
@@ -120,7 +119,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWHOSTILES.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWHOSTILES.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -148,7 +147,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWNEUTRALS.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWNEUTRALS.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -176,7 +175,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWPLAYERS.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWPLAYERS.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -204,7 +203,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWPLAYERNAMES.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWPLAYERNAMES.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -232,7 +231,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWMOBNAMES.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWMOBNAMES.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -260,7 +259,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWPLAYERHELMETS.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWPLAYERHELMETS.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -283,7 +282,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (illegal): Must be OFF!"));
+            return Tooltip.create(Component.translatable("civvoxelmap.feature.illegal.tooltip.off"));
         }
     };
 
@@ -292,7 +291,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWMOBHELMETS.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWMOBHELMETS.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -315,7 +314,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (illegal): Must be OFF!"));
+            return Tooltip.create(Component.translatable("civvoxelmap.feature.illegal.tooltip.off"));
         }
     };
 
@@ -324,7 +323,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.SHOWFACING.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.SHOWFACING.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -352,7 +351,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.RADARFILTERING.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.RADARFILTERING.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -380,7 +379,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage(I18n.get(EnumOptionsMinimap.RADAROUTLINES.getName()), value);
+            return Buttons.boolMessage(Component.translatable(EnumOptionsMinimap.RADAROUTLINES.getName()), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -412,7 +411,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage("Hide elevation", value);
+            return Buttons.boolMessage(Component.translatable("civvoxelmap.settings.elevation.label"), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -435,7 +434,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (illegal): Must be ON!"));
+            return Tooltip.create(Component.translatable("civvoxelmap.feature.illegal.tooltip.on"));
         }
     };
 
@@ -444,7 +443,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage("Hide sneaking", value);
+            return Buttons.boolMessage(Component.translatable("civvoxelmap.settings.sneaking.label"), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -467,7 +466,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (Fair Play): Hide crouching entities? (slight delay)"));
+            return Tooltip.create(Component.translatable("civvoxelmap.settings.sneaking.tooltip"));
         }
     };
 
@@ -476,7 +475,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage("Hide invisible", value);
+            return Buttons.boolMessage(Component.translatable("civvoxelmap.settings.invisible.label"), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -499,7 +498,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (Fair Play): Hide invisible entities? (slight delay)"));
+            return Tooltip.create(Component.translatable("civvoxelmap.settings.invisible.tooltip"));
         }
     };
 
@@ -508,7 +507,7 @@ public interface RadarOption<T> {
         public @NotNull Component getLabel(
             final @NotNull Boolean value
         ) {
-            return Buttons.boolMessage("Better sorting", value);
+            return Buttons.boolMessage(Component.translatable("civvoxelmap.settings.sorting.label"), value);
         }
         @Override
         public @NotNull Boolean getValue(
@@ -531,7 +530,7 @@ public interface RadarOption<T> {
         }
         @Override
         public Tooltip getTooltip() {
-            return Tooltip.create(Component.literal("Civ (Improvement): Sort radar entities in the order of: players > hostiles > others? (slight delay)"));
+            return Tooltip.create(Component.translatable("civvoxelmap.settings.sorting.tooltip"));
         }
     };
 }

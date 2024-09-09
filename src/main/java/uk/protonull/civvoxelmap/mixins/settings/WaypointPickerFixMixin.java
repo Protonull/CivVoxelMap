@@ -1,9 +1,9 @@
 package uk.protonull.civvoxelmap.mixins.settings;
 
 import com.mamiyaotaru.voxelmap.gui.GuiAddWaypoint;
+import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,7 +31,7 @@ public abstract class WaypointPickerFixMixin {
     ) {
         final GuiAddWaypoint self = Helpers.hardCast(this);
         // .popupOpen() is a misnomer, it returns true when the screen is open, but the "popups" are closed.
-        if (!self.popupOpen() && keyCode == GLFW.GLFW_KEY_ESCAPE) {
+        if (!self.popupOpen() && keyCode == InputConstants.KEY_ESCAPE) {
             this.choosingColor = false;
             this.choosingIcon = false;
             for (final GuiEventListener element : self.getButtonList()) {

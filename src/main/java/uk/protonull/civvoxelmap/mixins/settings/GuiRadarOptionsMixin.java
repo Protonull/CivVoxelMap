@@ -101,7 +101,7 @@ public abstract class GuiRadarOptionsMixin {
             case FULL -> {
                 cvm$addOptionButtonWithCog(
                     new RadarOptionButton<>(this.options, RadarOption.SHOW_PLAYERS),
-                    Component.literal("More player settings"),
+                    Component.translatable("civvoxelmap.settings.player.label"),
                     (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forPlayers(screen, this.options))
                 );
                 cvm$addOptionButtonWithCog(
@@ -109,7 +109,7 @@ public abstract class GuiRadarOptionsMixin {
                     Buttons.createButton(Component.translatable("options.minimap.radar.selectmobs"))
                         .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
                         .build(),
-                    Component.literal("More mob settings"),
+                    Component.translatable("civvoxelmap.settings.mods.label"),
                     (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forMobs(screen, this.options))
                 );
                 cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.FILTERING));

@@ -68,7 +68,7 @@ public final class MoreRadarSettingsScreen extends Screen {
     ) {
         return new MoreRadarSettingsScreen(
             parentScreen,
-            Component.literal("Additional Player-Radar Settings"),
+            Component.translatable("civvoxelmap.screens.radar.player"),
             List.of(
                 new RadarOptionButton<>(manager, RadarOption.SHOW_PLAYER_NAMES),
                 new RadarOptionButton<>(manager, RadarOption.SHOW_PLAYER_HELMETS)
@@ -82,7 +82,7 @@ public final class MoreRadarSettingsScreen extends Screen {
     ) {
         return new MoreRadarSettingsScreen(
             parentScreen,
-            Component.literal("Additional Mob-Radar Settings"),
+            Component.translatable("civvoxelmap.screens.radar.mod"),
             List.of(
                 new RadarOptionButton<>(manager, RadarOption.SHOW_HOSTILES),
                 new RadarOptionButton<>(manager, RadarOption.SHOW_NEUTRALS),

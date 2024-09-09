@@ -27,16 +27,18 @@ public final class Buttons {
     }
 
     public static @NotNull Component boolMessage(
-        final @NotNull String prefix,
+        final @NotNull Component prefix,
         final boolean value
     ) {
-        return Component.literal(prefix + ": " + (value ? "ON" : "OFF"));
+        return value
+            ? Component.translatable("civmodern.gui.button.bool.on", prefix)
+            : Component.translatable("civmodern.gui.button.bool.off", prefix);
     }
 
     public static <T extends Enum<T>> @NotNull Component enumMessage(
-        final @NotNull String prefix,
+        final @NotNull Component prefix,
         final T value
     ) {
-        return Component.literal(prefix + ": " + value.name());
+        return Component.translatable("civmodern.gui.button.enum", prefix, value.name());
     }
 }

@@ -1,0 +1,18 @@
+{
+    "civmodern.gui.button.bool.on": "%s: ON",
+    "civmodern.gui.button.bool.off": "%s: OFF",
+    "civmodern.gui.button.enum": "%s: %s",
+    "civvoxelmap.feature.illegal.tooltip.off": "Civ (illegal): Must be OFF!",
+    "civvoxelmap.feature.illegal.tooltip.on": "Civ (illegal): Must be ON!",
+    "civvoxelmap.screens.radar.player": "Additional Player-Radar Settings",
+    "civvoxelmap.screens.radar.mod": "Additional Mob-Radar Settings",
+    "civvoxelmap.settings.player.label": "More player settings",
+    "civvoxelmap.settings.mods.label": "More mob settings",
+    "civvoxelmap.settings.elevation.label": "Hide elevation",
+    "civvoxelmap.settings.sneaking.label": "Hide sneaking",
+    "civvoxelmap.settings.sneaking.tooltip": "Civ (Fair Play): Hide crouching entities? (slight delay)",
+    "civvoxelmap.settings.invisible.label": "Hide invisible",
+    "civvoxelmap.settings.invisible.tooltip": "Civ (Fair Play): Hide invisible entities? (slight delay)",
+    "civvoxelmap.settings.sorting.label": "Better sorting",
+    "civvoxelmap.settings.sorting.tooltip": "Civ (Improvement): Sort radar entities in the order of: players > hostiles > others? (slight delay)"
+}

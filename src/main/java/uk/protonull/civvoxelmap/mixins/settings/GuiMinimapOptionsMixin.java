@@ -31,7 +31,7 @@ public abstract class GuiMinimapOptionsMixin {
         final @NotNull @Local GuiOptionButtonMinimap button
     ) {
         switch (button.returnEnumOptions()) {
-            case CAVEMODE -> button.setTooltip(Tooltip.create(Component.literal("Civ (illegal): Must be OFF!")));
+            case CAVEMODE -> button.setTooltip(Tooltip.create(Component.translatable("civvoxelmap.feature.illegal.tooltip.off")));
         }
     }
 }
