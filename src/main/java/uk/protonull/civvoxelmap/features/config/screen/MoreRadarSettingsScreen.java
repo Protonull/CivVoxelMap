@@ -12,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import uk.protonull.civvoxelmap.features.config.RadarConfigAlignment;
 import uk.protonull.civvoxelmap.features.config.RadarOption;
-import uk.protonull.civvoxelmap.features.config.widgets.Buttons;
 import uk.protonull.civvoxelmap.features.config.widgets.RadarOptionButton;
 
 public final class MoreRadarSettingsScreen extends Screen {
@@ -43,12 +42,15 @@ public final class MoreRadarSettingsScreen extends Screen {
         this.optionIndex = 0;
         this.options.forEach(this::addOptionButton);
 
-        addRenderableWidget(
-            Buttons.createButton(Component.translatable("gui.done"))
-                .onPress((button) -> VoxelConstants.getMinecraft().setScreen(this.parentScreen))
-                .bounds(this.width / 2 - 100, this.height / 6 + 168, 200, 20)
-                .build()
-        );
+        addRenderableWidget(new Button(
+            this.width / 2 - 100,
+            this.height / 6 + 168,
+            200,
+            Button.DEFAULT_HEIGHT,
+            Component.translatable("gui.done"),
+            (button) -> VoxelConstants.getMinecraft().setScreen(this.parentScreen),
+            Button.DEFAULT_NARRATION
+        ));
     }
 
     @Override

@@ -22,7 +22,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import uk.protonull.civvoxelmap.features.config.RadarConfigAlignment;
 import uk.protonull.civvoxelmap.features.config.RadarOption;
 import uk.protonull.civvoxelmap.features.config.screen.MoreRadarSettingsScreen;
-import uk.protonull.civvoxelmap.features.config.widgets.Buttons;
 import uk.protonull.civvoxelmap.features.config.widgets.RadarOptionButton;
 
 @Mixin(GuiRadarOptions.class)
@@ -60,13 +59,16 @@ public abstract class GuiRadarOptionsMixin {
         cvm$addOptionButton(button);
 
         final var screen = (GuiRadarOptions) (Object) this;
-        final Button cog = screen.addRenderableWidget(
-            Buttons.createButton(Component.literal("⚙"))
-                .onPress(Objects.requireNonNull(onPress))
-                .tooltip(Objects.requireNonNull(Tooltip.create(tooltip)))
-                .size(20, 20)
-                .build()
-        );
+        final Button cog = screen.addRenderableWidget(new Button(
+            0,
+            0,
+            20,
+            Button.DEFAULT_HEIGHT,
+            Component.literal("⚙"),
+            Objects.requireNonNull(onPress),
+            Button.DEFAULT_NARRATION
+        ));
+        cog.setTooltip(Tooltip.create(Objects.requireNonNull(tooltip)));
 
         button.setWidth(button.getWidth() - cog.getWidth() - RadarConfigAlignment.X_PADDING);
         cog.setX(button.getX() + button.getWidth() + RadarConfigAlignment.X_PADDING);
@@ -108,9 +110,15 @@ public abstract class GuiRadarOptionsMixin {
                 );
                 cvm$addOptionButtonWithCog(
                     // TODO: Fix this button not disabling when the radar is disabled, unlike the RadarOptionButton's
-                    Buttons.createButton(Component.translatable("options.minimap.radar.selectmobs"))
-                        .onPress((self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)))
-                        .build(),
+                    new Button(
+                        0,
+                        0,
+                        Button.DEFAULT_WIDTH,
+                        Button.DEFAULT_HEIGHT,
+                        Component.translatable("options.minimap.radar.selectmobs"),
+                        (self) -> VoxelConstants.getMinecraft().setScreen(new GuiMobs(screen, this.options)),
+                        Button.DEFAULT_NARRATION
+                    ),
                     Component.translatable("civvoxelmap.settings.mods.label"),
                     (cog) -> VoxelConstants.getMinecraft().setScreen(MoreRadarSettingsScreen.forMobs(screen, this.options))
                 );
@@ -124,12 +132,15 @@ public abstract class GuiRadarOptionsMixin {
         cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.HIDE_INVISIBLE));
         cvm$addOptionButton(new RadarOptionButton<>(this.options, RadarOption.BETTER_RADAR_SORTING));
 
-        screen.addRenderableWidget(
-            Buttons.createButton(Component.translatable("gui.done"))
-                .onPress((button) -> VoxelConstants.getMinecraft().setScreen(this.parent))
-                .bounds(screen.width / 2 - 100, screen.height / 6 + 168, 200, 20)
-                .build()
-        );
+        screen.addRenderableWidget(new Button(
+            screen.width / 2 - 100,
+            screen.height / 6 + 168,
+            200,
+            Button.DEFAULT_HEIGHT,
+            Component.translatable("gui.done"),
+            (button) -> VoxelConstants.getMinecraft().setScreen(this.parent),
+            Button.DEFAULT_NARRATION
+        ));
     }
 
     @Redirect(
