@@ -2,7 +2,7 @@
 // See Gradle's releases here: https://gradle.org/releases/
 
 plugins {
-    id("fabric-loom") version "1.7-SNAPSHOT"
+    id("fabric-loom") version "1.8-SNAPSHOT"
 }
 
 version = "${rootProject.extra["mod_version"]}-${project.extra["minecraft_version"]}"
