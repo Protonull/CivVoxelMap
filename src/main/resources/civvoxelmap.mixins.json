@@ -12,6 +12,8 @@
         "commands.DisableVoxelMapCommands",
         "commands.ReplaceVoxelMapCommands",
         "elevation.ObscureElevationMixin",
+        "elevation.RadarPreventElevationFilteringMixin",
+        "elevation.RadarSimplePreventElevationFilteringMixin",
         "radar.RadarMixin",
         "radar.RadarSimpleMixin",
         "settings.GuiMinimapOptionsMixin",
