@@ -5,6 +5,7 @@ import com.mamiyaotaru.voxelmap.VoxelConstants;
 import com.mamiyaotaru.voxelmap.gui.GuiMobs;
 import com.mamiyaotaru.voxelmap.gui.GuiRadarOptions;
 import java.util.Objects;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -16,6 +17,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import uk.protonull.civvoxelmap.features.config.RadarConfigAlignment;
 import uk.protonull.civvoxelmap.features.config.RadarOption;
 import uk.protonull.civvoxelmap.features.config.screen.MoreRadarSettingsScreen;
@@ -127,5 +130,19 @@ public abstract class GuiRadarOptionsMixin {
                 .bounds(screen.width / 2 - 100, screen.height / 6 + 168, 200, 20)
                 .build()
         );
+    }
+
+    @Redirect(
+        method = "render",
+        at = @At(
+            value = "INVOKE",
+            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;renderTransparentBackground(Lnet/minecraft/client/gui/GuiGraphics;)V"
+        )
+    )
+    protected void civvoxelmap$doNotRenderBackground(
+        final @NotNull GuiRadarOptions instance,
+        final @NotNull GuiGraphics guiGraphics
+    ) {
+        // DO NOTHING
     }
 }
