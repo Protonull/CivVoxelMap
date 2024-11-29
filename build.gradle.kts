@@ -26,8 +26,8 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.extra["fabric_loader_version"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fabric_api_version"]}")
 
-    // https://modrinth.com/mod/voxelmap-updated/version/1.21-1.13.1
-    "maven.modrinth:voxelmap-updated:QZuVdvFR".also {
+    // https://modrinth.com/mod/voxelmap-updated/version/1.21.3-1.14.2
+    "maven.modrinth:voxelmap-updated:GSnx2ui0".also {
         modImplementation(it)
         include(it)
     }
