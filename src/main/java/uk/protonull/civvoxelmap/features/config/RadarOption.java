@@ -469,8 +469,7 @@ public interface RadarOption<T> {
             return Tooltip.create(
                 Component.empty()
                     .append(Component.translatable("civvoxelmap.settings.sneaking.tooltip"))
-                    .append(Component.literal("\n"))
-                    .append(Component.literal("\n"))
+                    .append(Component.literal("\n \n"))
                     .append(Component.translatable("civvoxelmap.feature.illegal.tooltip.off"))
             );
         }
@@ -507,8 +506,7 @@ public interface RadarOption<T> {
             return Tooltip.create(
                 Component.empty()
                     .append(Component.translatable("civvoxelmap.settings.invisible.tooltip"))
-                    .append(Component.literal("\n"))
-                    .append(Component.literal("\n"))
+                    .append(Component.literal("\n \n"))
                     .append(Component.translatable("civvoxelmap.feature.illegal.tooltip.off"))
             );
         }
