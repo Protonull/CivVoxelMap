@@ -6,7 +6,7 @@ version = "${rootProject.extra["mod_version"]}-${project.extra["minecraft_versio
 group = "${rootProject.extra["maven_group"]}.mod.fabric"
 
 base {
-    archivesName.set(project.extra["archives_base_name"] as String)
+    archivesName = "${project.extra["archives_base_name"]}"
 }
 
 loom {
@@ -65,7 +65,7 @@ java {
 tasks {
     jar {
         from("LICENCE") {
-            rename { "LICENSE_${project.extra["mod_name"]}"} // Use US spelling
+            rename { "LICENSE_${project.extra["mod_name"]}" } // Use US spelling
         }
     }
     compileJava {
