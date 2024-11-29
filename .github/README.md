@@ -38,7 +38,7 @@ legal.
 
 ## Recommended
 
-- [ModMenu](https://modrinth.com/mod/modmenu): `v11.0.1` (or newer)
+- [ModMenu](https://modrinth.com/mod/modmenu): `v12.0.0` (or newer)
 
 ## Having issues?
 
