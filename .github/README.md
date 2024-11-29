@@ -33,8 +33,8 @@ legal.
 
 ## Requirements
 
-- Fabric Loader: `0.16.2` (or newer)
-- [Fabric API](https://modrinth.com/mod/fabric-api): `0.102.1+1.21.1` (or newer)
+- Fabric Loader: `0.16.9` (or newer)
+- [Fabric API](https://modrinth.com/mod/fabric-api): `0.110.0+1.21.3` (or newer)
 
 ## Recommended
 
