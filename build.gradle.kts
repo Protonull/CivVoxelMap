@@ -1,6 +1,3 @@
-// Update Gradle Wrapper using: ./gradlew wrapper --distribution-type bin --gradle-version <version>
-// See Gradle's releases here: https://gradle.org/releases/
-
 plugins {
     id("fabric-loom") version "1.8-SNAPSHOT"
 }
