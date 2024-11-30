@@ -1,6 +1,6 @@
 # CivVoxelMap
 
-This is a 'fork' of [VoxelMap](https://modrinth.com/mod/voxelmap-updated) for 1.21.1 that's [CivMC](https://civmc.net)
+This is a 'fork' of [VoxelMap](https://modrinth.com/mod/voxelmap-updated) for 1.21.3 that's [CivMC](https://civmc.net)
 legal.
 
 ## Changes
@@ -12,11 +12,12 @@ legal.
   warning to the option buttons of the feature's illegality.
 
 - CivMC bans reading entity elevation so players and mobs are no longer darkened or faded by how far above or below they
-  are from you. Also added a warning to the option button of the feature's illegality.
+  are from you. Also added a warning to the option button of the feature's illegality. In addition, elevation is no
+  longer considered when filtering out radar-entities considered too far away.
 
-- Added a fair-play option to disable seeing crouched entities in your radar.
+- Added a fair-play option to disable seeing crouched entities in your radar. (Currently CivMC illegal)
 
-- Added a fair-play option to disable seeing invisible entities in your radar.
+- Added a fair-play option to disable seeing invisible entities in your radar. (Currently CivMC illegal)
 
 - Specific player/mob radar options now have their own screens, just click the cog icon.
 
