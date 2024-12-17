@@ -32,9 +32,8 @@ dependencies {
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/12.0.0-beta.1
-    // TODO: This is a beta, update as soon as there's a release!
-    "maven.modrinth:modmenu:PcJvQYqu".also {
+    // https://modrinth.com/mod/modmenu/version/12.0.0
+    "maven.modrinth:modmenu:4xPSbh0l".also {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
