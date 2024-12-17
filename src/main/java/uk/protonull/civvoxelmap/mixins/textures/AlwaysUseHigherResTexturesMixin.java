@@ -19,7 +19,7 @@ public abstract class AlwaysUseHigherResTexturesMixin {
     private int cvm$drawWaypoint$scale$neverUseSmallWaypointIcons(
         final int scScale
     ) {
-        return Math.min(scScale, 3);
+        return Math.max(scScale, 3);
     }
 
     @ModifyArg(
