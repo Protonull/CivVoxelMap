@@ -30,7 +30,7 @@ public abstract class RadarSimpleMixin {
         ),
         remap = false
     )
-    private @NotNull Iterator<Entity> cvm$filterEntities(
+    private @NotNull Iterator<Entity> civvoxelmap$filterEntities(
         final @NotNull Iterator<Entity> iterator
     ) {
         return ExtraRadarSettings.filterEntities(iterator, (ExtraRadarSettings.Accessor) this.options);
@@ -49,7 +49,7 @@ public abstract class RadarSimpleMixin {
         ),
         remap = false
     )
-    private void cvm$sortEntities(
+    private void civvoxelmap$sortEntities(
         final @NotNull ArrayList<Contact> entities,
         final @NotNull Comparator<Contact> elevationComparator
     ) {

@@ -20,7 +20,7 @@ public abstract class MapSettingsManagerMixin {
         at = @At("TAIL"),
         remap = false
     )
-    private void cvm$constructor$disableCaveModeByDefault(
+    private void civvoxelmap$disableCaveModeByDefault(
         final @NotNull CallbackInfo ci
     ) {
         this.showCaves = false;

@@ -29,7 +29,7 @@ public abstract class ChatWaypointSafelyClickMixin {
         ),
         remap = false
     )
-    private static Waypoint cvm$waypointClicked$safelyCatchError(
+    private static Waypoint civvoxelmap$waypointClicked$safelyCatchError(
         final @NotNull String raw
     ) {
         try {

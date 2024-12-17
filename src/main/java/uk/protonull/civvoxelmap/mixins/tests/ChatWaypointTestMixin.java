@@ -24,7 +24,7 @@ public class ChatWaypointTestMixin {
             shift = At.Shift.AFTER
         )
     )
-    public void cvm$printChatWaypointImmediatelyUponLogin(
+    public void civvoxelmap$printChatWaypointImmediatelyUponLogin(
         final @NotNull ClientboundLoginPacket packet,
         final @NotNull CallbackInfo ci
     ) {

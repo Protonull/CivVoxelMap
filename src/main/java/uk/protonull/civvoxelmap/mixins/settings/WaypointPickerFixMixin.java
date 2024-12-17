@@ -22,7 +22,7 @@ public abstract class WaypointPickerFixMixin {
         at = @At("TAIL"),
         cancellable = true
     )
-    protected void cvm$closePopupOnEsc(
+    protected void civvoxelmap$closePopupOnEsc(
         final int keyCode,
         final int scanCode,
         final int modifiers,

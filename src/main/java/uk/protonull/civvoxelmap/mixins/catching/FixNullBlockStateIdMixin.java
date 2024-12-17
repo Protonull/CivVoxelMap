@@ -17,7 +17,7 @@ public abstract class FixNullBlockStateIdMixin {
         at = @At("TAIL"),
         remap = false
     )
-    protected @NotNull Integer cvm$getIDFromState$zeroOutNullIds(
+    protected @NotNull Integer civvoxelmap$zeroOutNullIds(
         final Integer id
     ) {
         return id == null ? 0 : id;

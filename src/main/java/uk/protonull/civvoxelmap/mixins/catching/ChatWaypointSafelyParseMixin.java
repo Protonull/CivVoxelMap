@@ -18,7 +18,7 @@ public abstract class ChatWaypointSafelyParseMixin {
             target = "Lcom/mamiyaotaru/voxelmap/util/CommandUtils;checkForWaypoints(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/GuiMessageTag;)Z"
         )
     )
-    private static boolean cvm$onChat$safelyCatchError(
+    private static boolean civvoxelmap$safelyCatchError(
         final @NotNull Component chat,
         final @NotNull GuiMessageTag indicator
     ) {

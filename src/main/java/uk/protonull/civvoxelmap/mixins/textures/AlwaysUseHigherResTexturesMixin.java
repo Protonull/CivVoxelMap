@@ -16,7 +16,7 @@ public abstract class AlwaysUseHigherResTexturesMixin {
         argsOnly = true,
         remap = false
     )
-    private int cvm$drawWaypoint$scale$neverUseSmallWaypointIcons(
+    private int civvoxelmap$clampScaleToMinOf3(
         final int scScale
     ) {
         return Math.max(scScale, 3);
@@ -29,7 +29,7 @@ public abstract class AlwaysUseHigherResTexturesMixin {
             target = "Lcom/mamiyaotaru/voxelmap/textures/TextureAtlas;getAtlasSprite(Ljava/lang/String;)Lcom/mamiyaotaru/voxelmap/textures/Sprite;"
         )
     )
-    private @NotNull  String cvm$drawWaypoint$assets$neverUseSmallWaypointIcons(
+    private @NotNull  String civvoxelmap$neverUseSmallWaypointIcons(
         final @NotNull String path
     ) {
         return switch (path) {

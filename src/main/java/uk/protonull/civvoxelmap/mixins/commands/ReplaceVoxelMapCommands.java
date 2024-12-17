@@ -16,7 +16,7 @@ public abstract class ReplaceVoxelMapCommands {
         at = @At("HEAD"),
         cancellable = true
     )
-    protected void cvm$sendCommand$interceptSignedCommand(
+    protected void civvoxelmap$interceptSignedCommand(
         final @NotNull String command,
         final @NotNull CallbackInfo ci
     ) {
@@ -30,7 +30,7 @@ public abstract class ReplaceVoxelMapCommands {
         at = @At("HEAD"),
         cancellable = true
     )
-    protected void cvm$sendCommand$interceptUnsignedCommand(
+    protected void civvoxelmap$interceptUnsignedCommand(
         final @NotNull String command,
         final @NotNull CallbackInfoReturnable<Boolean> cir
     ) {

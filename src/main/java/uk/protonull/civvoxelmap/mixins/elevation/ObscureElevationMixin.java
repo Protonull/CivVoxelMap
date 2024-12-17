@@ -28,7 +28,7 @@ public abstract class ObscureElevationMixin {
         at = @At("TAIL"),
         remap = false
     )
-    protected void cvm$updateLocation$resetElevation(
+    protected void civvoxelmap$useSameElevationAsPlayer(
         final @NotNull CallbackInfo ci
     ) {
         if (((ExtraRadarSettings.Accessor) VoxelMap.radarOptions).hideElevation()) {

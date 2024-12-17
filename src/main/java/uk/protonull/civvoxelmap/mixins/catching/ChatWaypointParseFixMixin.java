@@ -26,7 +26,7 @@ public abstract class ChatWaypointParseFixMixin {
         ),
         remap = false
     )
-    private static @Nullable Waypoint cvm$getWaypointStrings$checkWaypointFormat(
+    private static @Nullable Waypoint civvoxelmap$checkWaypointFormat(
         final @NotNull String raw
     ) {
         return AttemptWaypointParse.attemptParse(raw);
