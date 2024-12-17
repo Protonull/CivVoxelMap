@@ -2,7 +2,6 @@ package uk.protonull.civvoxelmap.mixins.catching;
 
 import com.mamiyaotaru.voxelmap.persistent.CompressibleMapData;
 import org.jetbrains.annotations.NotNull;
-import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -13,22 +12,6 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
  */
 @Mixin(CompressibleMapData.class)
 public abstract class FixNullBlockStateIdMixin {
-    @ModifyVariable(
-        method = "createKeyFromCurrentBlocks",
-        at = @At(
-            value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/persistent/CompressibleMapData;setData(IIIB)V",
-            shift = At.Shift.BEFORE,
-            opcode = Opcodes.ASTORE
-        ),
-        remap = false
-    )
-    protected @NotNull Integer cvm$createKeyFromCurrentBlocks$zeroOutNullIds(
-        final Integer id
-    ) {
-        return id == null ? 0 : id;
-    }
-
     @ModifyVariable(
         method = "getIDFromState",
         at = @At("TAIL"),
