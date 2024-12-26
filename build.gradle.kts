@@ -26,21 +26,22 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.extra["fabric_loader_version"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fabric_api_version"]}")
 
-    // https://modrinth.com/mod/voxelmap-updated/version/1.21.3-1.14.2
-    "maven.modrinth:voxelmap-updated:GSnx2ui0".also {
+    // https://modrinth.com/mod/voxelmap-updated/version/1.21.4-1.14.7
+    "maven.modrinth:voxelmap-updated:lIwnSHMm".also {
         modImplementation(it)
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/12.0.0
-    "maven.modrinth:modmenu:4xPSbh0l".also {
+    // https://modrinth.com/mod/modmenu/version/13.0.0-beta.1
+    // TODO: Update to a release version ASAP
+    "maven.modrinth:modmenu:2pJcGBVh".also {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
 
     // This is literally only here to make Minecraft SHUT UP about non-signed messages while testing.
-    // https://modrinth.com/mod/no-chat-reports/version/Fabric-1.21.3-v2.10.1
-    modLocalRuntime("maven.modrinth:no-chat-reports:Cg7X9iDa")
+    // https://modrinth.com/mod/no-chat-reports/version/Fabric-1.21.4-v2.11.0
+    modLocalRuntime("maven.modrinth:no-chat-reports:9xt05630")
 }
 
 repositories {
