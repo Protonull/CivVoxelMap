@@ -32,9 +32,8 @@ dependencies {
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/13.0.0-beta.1
-    // TODO: Update to a release version ASAP
-    "maven.modrinth:modmenu:2pJcGBVh".also {
+    // https://modrinth.com/mod/modmenu/version/13.0.0
+    "maven.modrinth:modmenu:dG06oDvH".also {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
