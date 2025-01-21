@@ -147,7 +147,7 @@ public abstract class GuiRadarOptionsMixin {
         method = "render",
         at = @At(
             value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;renderTransparentBackground(Lnet/minecraft/client/gui/GuiGraphics;)V"
+            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;renderBlurredBackground()V"
         )
     )
     protected void civvoxelmap$doNotRenderBackground(
