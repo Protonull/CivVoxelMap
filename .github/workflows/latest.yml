@@ -34,5 +34,4 @@ jobs:
           prerelease: true
           title: "Latest (Unstable)"
           files: |
-            LICENCE
             dist/*.jar
