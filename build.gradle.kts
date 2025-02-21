@@ -32,8 +32,8 @@ dependencies {
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/13.0.0
-    "maven.modrinth:modmenu:dG06oDvH".also {
+    // https://modrinth.com/mod/modmenu/version/13.0.2
+    "maven.modrinth:modmenu:qPUMDJX6".also {
         modCompileOnly(it)
         modLocalRuntime(it)
     }
