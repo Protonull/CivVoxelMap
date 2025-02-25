@@ -1,4 +1,4 @@
-package uk.protonull.civvoxelmap.mixins.catching;
+package uk.protonull.civvoxelmap.mixins.waypoints;
 
 import com.mamiyaotaru.voxelmap.VoxelConstants;
 import com.mamiyaotaru.voxelmap.util.CommandUtils;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CommandUtils.class)
-public abstract class ChatWaypointSafelyClickMixin {
+public abstract class ClickableWaypointPreventCrashMixin {
     @Shadow(
         remap = false
     )

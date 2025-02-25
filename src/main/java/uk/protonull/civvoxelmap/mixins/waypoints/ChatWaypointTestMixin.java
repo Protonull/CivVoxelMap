@@ -1,6 +1,7 @@
-package uk.protonull.civvoxelmap.mixins.tests;
+package uk.protonull.civvoxelmap.mixins.waypoints;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.chat.Component;
@@ -15,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
     value = ClientPacketListener.class,
     priority = 100
 )
-public class ChatWaypointTestMixin {
+public abstract class ChatWaypointTestMixin {
     @Inject(
         method = "handleLogin",
         at = @At(
@@ -24,12 +25,18 @@ public class ChatWaypointTestMixin {
             shift = At.Shift.AFTER
         )
     )
-    public void civvoxelmap$printChatWaypointImmediatelyUponLogin(
+    protected void civvoxelmap$printChatWaypointImmediatelyUponLogin(
         final @NotNull ClientboundLoginPacket packet,
         final @NotNull CallbackInfo ci
     ) {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            Minecraft.getInstance().gui.getChat().addMessage(Component.literal("[x:1234, y:123, z:-1234, dim:minecraft:overworld]"));
+            Minecraft.getInstance().gui.getChat().addMessage(
+                Component.literal("<")
+                    .append(Component.literal(Minecraft.getInstance().getGameProfile().getName()).withStyle(ChatFormatting.LIGHT_PURPLE))
+                    .append(Component.literal("> §aGo§r here [x:1234, y:12, "))
+                    .append(Component.literal("z:0").withStyle(ChatFormatting.YELLOW))
+                    .append(Component.literal("] for §aloot!"))
+            );
         }
     }
 }

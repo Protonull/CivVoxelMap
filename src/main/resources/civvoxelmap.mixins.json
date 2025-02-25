@@ -5,9 +5,6 @@
     "compatibilityLevel": "JAVA_21",
     "mixins": [],
     "client": [
-        "catching.ChatWaypointParseFixMixin",
-        "catching.ChatWaypointSafelyClickMixin",
-        "catching.ChatWaypointSafelyParseMixin",
         "catching.FixNullBlockStateIdMixin",
         "commands.DisableVoxelMapCommands",
         "commands.ReplaceVoxelMapCommands",
@@ -21,8 +18,11 @@
         "settings.MapSettingsManagerMixin",
         "settings.RadarSettingsManagerMixin",
         "settings.WaypointPickerFixMixin",
-        "tests.ChatWaypointTestMixin",
-        "textures.AlwaysUseHigherResTexturesMixin"
+        "textures.AlwaysUseHigherResTexturesMixin",
+        "waypoints.ClickableWaypointPreventCrashMixin",
+        "waypoints.ChatWaypointTestMixin",
+        "waypoints.InjectClickableWaypointMixin",
+        "waypoints.PreventOfficialWaypointParsingMixin"
     ],
     "injectors": {
         "defaultRequire": 1
