@@ -39,7 +39,7 @@ legal.
 
 ## Recommended
 
-- [ModMenu](https://modrinth.com/mod/modmenu): `v13.0.0` (or newer)
+- [ModMenu](https://modrinth.com/mod/modmenu): `v13.0.2` (or newer)
 
 ## Having issues?
 
