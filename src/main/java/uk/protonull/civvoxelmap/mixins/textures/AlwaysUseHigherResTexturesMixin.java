@@ -26,18 +26,21 @@ public abstract class AlwaysUseHigherResTexturesMixin {
         method = "drawWaypoint",
         at = @At(
             value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/textures/TextureAtlas;getAtlasSprite(Ljava/lang/String;)Lcom/mamiyaotaru/voxelmap/textures/Sprite;"
+            target = "Lcom/mamiyaotaru/voxelmap/textures/TextureAtlas;getAtlasSprite(Ljava/lang/Object;)Lcom/mamiyaotaru/voxelmap/textures/Sprite;"
         )
     )
-    private @NotNull  String civvoxelmap$neverUseSmallWaypointIcons(
-        final @NotNull String path
+    private @NotNull Object civvoxelmap$neverUseSmallWaypointIcons(
+        final @NotNull Object object
     ) {
-        return switch (path) {
-            case "voxelmap:images/waypoints/markersmall.png" -> "voxelmap:images/waypoints/marker.png";
-            case "voxelmap:images/waypoints/markerskullsmall.png" -> "voxelmap:images/waypoints/markerskull.png";
-            case "voxelmap:images/waypoints/waypointskullsmall.png" -> "voxelmap:images/waypoints/waypointskull.png";
-            case "voxelmap:images/waypoints/waypointsmall.png" -> "voxelmap:images/waypoints/waypoint.png";
-            default -> path;
-        };
+        if (object instanceof final String path) {
+            return switch (path) {
+                case "voxelmap:images/waypoints/markersmall.png" -> "voxelmap:images/waypoints/marker.png";
+                case "voxelmap:images/waypoints/markerskullsmall.png" -> "voxelmap:images/waypoints/markerskull.png";
+                case "voxelmap:images/waypoints/waypointskullsmall.png" -> "voxelmap:images/waypoints/waypointskull.png";
+                case "voxelmap:images/waypoints/waypointsmall.png" -> "voxelmap:images/waypoints/waypoint.png";
+                default -> path;
+            };
+        }
+        return object;
     }
 }

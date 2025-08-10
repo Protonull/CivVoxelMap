@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
@@ -60,11 +59,18 @@ public final class MoreRadarSettingsScreen extends Screen {
         final int mouseY,
         final float partialTick
     ) {
-        //super.render(guiGraphics, mouseX, mouseY, partialTick);
-        for (final Renderable renderable : this.renderables) {
-            renderable.render(guiGraphics, mouseX, mouseY, partialTick);
-        }
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
         guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 20, 0xFFFFFF);
+    }
+
+    @Override
+    public void renderBackground(
+        final @NotNull GuiGraphics guiGraphics,
+        final int mouseX,
+        final int mouseY,
+        final float partialTick
+    ) {
+        // DO NOTHING
     }
 
     public static @NotNull MoreRadarSettingsScreen forPlayers(

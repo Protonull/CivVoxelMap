@@ -1,5 +1,5 @@
 plugins {
-    id("fabric-loom") version "1.9-SNAPSHOT"
+    id("fabric-loom") version "1.11-SNAPSHOT"
 }
 
 version = "${rootProject.extra["mod_version"]}"
@@ -26,21 +26,20 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.extra["fabric_loader_version"]}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.extra["fabric_api_version"]}")
 
-    // https://modrinth.com/mod/voxelmap-updated/version/9q5Io7BF
-    "maven.modrinth:voxelmap-updated:9q5Io7BF".also {
+    // https://modrinth.com/mod/voxelmap-updated/versions?l=fabric
+    "maven.modrinth:voxelmap-updated:mE2JtUtN".also {
         modImplementation(it)
         include(it)
     }
 
-    // https://modrinth.com/mod/modmenu/version/13.0.2
-    "maven.modrinth:modmenu:qPUMDJX6".also {
-        modCompileOnly(it)
-        modLocalRuntime(it)
-    }
+    // TODO: Uncomment once ModMenu gets a 1.21.8 version. Remember to re-add the ModMeny integration code, and the
+    //       "suggests" and "modmenu" entrypoint in fabric.mod.json.
+    // https://modrinth.com/mod/modmenu/versions?l=fabric
+    //modImplementation("maven.modrinth:modmenu:qPUMDJX6")
 
     // This is literally only here to make Minecraft SHUT UP about non-signed messages while testing.
-    // https://modrinth.com/mod/no-chat-reports/version/Fabric-1.21.4-v2.11.0
-    modLocalRuntime("maven.modrinth:no-chat-reports:9xt05630")
+    // https://modrinth.com/mod/no-chat-reports/versions?c=release&l=fabric
+    modLocalRuntime("maven.modrinth:no-chat-reports:LhwpK0O6")
 }
 
 repositories {

@@ -3,6 +3,7 @@ package uk.protonull.civvoxelmap.mixins.radar;
 import com.mamiyaotaru.voxelmap.RadarSettingsManager;
 import com.mamiyaotaru.voxelmap.RadarSimple;
 import com.mamiyaotaru.voxelmap.util.Contact;
+import com.mamiyaotaru.voxelmap.util.MobCategory;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -36,11 +37,6 @@ public abstract class RadarSimpleMixin {
         return ExtraRadarSettings.filterEntities(iterator, (ExtraRadarSettings.Accessor) this.options);
     }
 
-    @Shadow
-    protected abstract boolean isHostile(
-        @NotNull Entity entity
-    );
-
     @Redirect(
         method = "calculateMobs",
         at = @At(
@@ -60,7 +56,7 @@ public abstract class RadarSimpleMixin {
         }
 
         if (extra.useBetterRadarSort()) {
-            entities.sort(ExtraRadarSettings.radarEntitiesComparator(this::isHostile));
+            entities.sort(ExtraRadarSettings.radarEntitiesComparator(MobCategory::isHostile));
         }
     }
 }

@@ -21,7 +21,7 @@ public abstract class ObscureElevationMixin {
     @Shadow(
         remap = false
     )
-    public int y;
+    public double y;
 
     @Inject(
         method = "updateLocation",

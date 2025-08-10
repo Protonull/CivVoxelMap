@@ -143,14 +143,29 @@ public abstract class GuiRadarOptionsMixin {
         ));
     }
 
+
     @Redirect(
         method = "render",
         at = @At(
             value = "INVOKE",
-            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;renderBlurredBackground()V"
+            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;renderBlurredBackground(Lnet/minecraft/client/gui/GuiGraphics;)V"
         )
     )
-    protected void civvoxelmap$doNotRenderBackground(
+    protected void civvoxelmap$doNotRenderBlurredBackground(
+        final @NotNull GuiRadarOptions instance,
+        final @NotNull GuiGraphics guiGraphics
+    ) {
+        // DO NOTHING
+    }
+
+    @Redirect(
+        method = "render",
+        at = @At(
+            value = "INVOKE",
+            target = "Lcom/mamiyaotaru/voxelmap/gui/GuiRadarOptions;renderMenuBackground(Lnet/minecraft/client/gui/GuiGraphics;)V"
+        )
+    )
+    protected void civvoxelmap$doNotRenderMenuBackground(
         final @NotNull GuiRadarOptions instance,
         final @NotNull GuiGraphics guiGraphics
     ) {

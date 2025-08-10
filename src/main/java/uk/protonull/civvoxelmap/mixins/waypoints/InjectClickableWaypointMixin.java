@@ -61,16 +61,14 @@ public abstract class InjectClickableWaypointMixin {
                 character.withStyle(
                     Style.EMPTY
                         .withColor(ChatFormatting.AQUA)
-                        .withHoverEvent(new HoverEvent(
-                            HoverEvent.Action.SHOW_TEXT,
+                        .withHoverEvent(new HoverEvent.ShowText(
                             CivVoxelMapUtils.ofChildren(
                                 Component.translatable("minimap.waypointshare.tooltip1"),
                                 CommonComponents.NEW_LINE,
                                 Component.translatable("minimap.waypointshare.tooltip2")
                             )
                         ))
-                        .withClickEvent(new ClickEvent(
-                            ClickEvent.Action.RUN_COMMAND,
+                        .withClickEvent(new ClickEvent.RunCommand(
                             "/newWaypoint " + innerWaypoint
                         ))
                 );
