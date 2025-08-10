@@ -25,8 +25,7 @@ public abstract class ContactMixin {
 			value = "FIELD",
 			target = "Lcom/mamiyaotaru/voxelmap/util/Contact;name:Lnet/minecraft/network/chat/Component;",
 			opcode = Opcodes.PUTFIELD
-		),
-		remap = false
+		)
 	)
 	protected void civvoxelmap$betterSetContactName(
 		final @NotNull Contact instance,
