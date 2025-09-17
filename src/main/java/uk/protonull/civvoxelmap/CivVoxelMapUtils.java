@@ -14,13 +14,13 @@ public final class CivVoxelMapUtils {
     public static @Nullable String getPlainContents(
         final Component component
     ) {
-        return component == null ? null : StringUtils.defaultIfEmpty(LEGACY_FORMATTER_REGEX.matcher(component.getString()).replaceAll(""), null);
+        return component == null ? null : LEGACY_FORMATTER_REGEX.matcher(component.getString()).replaceAll("");
     }
 
     public static @Nullable Component getPlainComponent(
         final Component component
     ) {
-        return switch (getPlainContents(component)) {
+        return switch (StringUtils.defaultIfEmpty(getPlainContents(component), null)) {
             case final String contents -> Component.literal(contents);
             case null -> null;
         };

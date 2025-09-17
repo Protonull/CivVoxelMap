@@ -40,6 +40,9 @@ public abstract class InjectClickableWaypointMixin {
             final StringBuilder plainBuilder = new StringBuilder();
             for (final Component part : original.toFlatList()) {
                 final String partPlain = CivVoxelMapUtils.getPlainContents(part);
+				if (StringUtils.isEmpty(partPlain)) {
+					continue;
+				}
                 plainBuilder.append(partPlain);
                 for (final String character : partPlain.split("")) {
                     splitByCharacter.add(Component.literal(character).withStyle(part.getStyle()));
