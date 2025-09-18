@@ -32,10 +32,8 @@ dependencies {
         include(it)
     }
 
-    // TODO: Uncomment once ModMenu gets a 1.21.8 version. Remember to re-add the ModMeny integration code, and the
-    //       "suggests" and "modmenu" entrypoint in fabric.mod.json.
     // https://modrinth.com/mod/modmenu/versions?l=fabric
-    //modImplementation("maven.modrinth:modmenu:qPUMDJX6")
+    modImplementation("maven.modrinth:modmenu:am1Siv7F")
 
     // This is literally only here to make Minecraft SHUT UP about non-signed messages while testing.
     // https://modrinth.com/mod/no-chat-reports/versions?c=release&l=fabric

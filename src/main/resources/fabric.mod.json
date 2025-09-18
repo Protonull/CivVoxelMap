@@ -15,7 +15,9 @@
     "icon": "assets/civvoxelmap/icon.png",
     "environment": "client",
     "entrypoints": {
-
+        "modmenu": [
+            "uk.protonull.civvoxelmap.features.modmenu.ModMenuIntegration"
+        ]
     },
     "accessWidener": "civvoxelmap.accesswidener",
     "depends": {
