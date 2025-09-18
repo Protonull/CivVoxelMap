@@ -9,6 +9,8 @@
         "elevation.ObscureElevationMixin",
         "elevation.RadarPreventElevationFilteringMixin",
         "elevation.RadarSimplePreventElevationFilteringMixin",
+        "policies.LegacyPolicyContraventionMixin",
+        "policies.PacketPolicyContraventionMixin",
         "radar.ContactMixin",
         "radar.RadarMixin",
         "radar.RadarSimpleMixin",
